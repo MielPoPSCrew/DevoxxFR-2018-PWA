@@ -13,18 +13,13 @@ export class LogUpdateService {
 
     updates.available.subscribe(event => {
       this.updateAvailable.next(true);
-      console.log('current version is', event.current);
-      console.log('available version is', event.available);
     });
 
-    updates.activated.subscribe(event => {
-      console.log('old version was', event.previous);
-      console.log('new version is', event.current);
-    });
-
-    interval(5000).subscribe(() => {
-      console.log('Checking update');
+    // Check update every 10 minutes
+    interval(10 * 1000 * 6).subscribe(() => {
       updates.checkForUpdate();
     });
+
+    updates.checkForUpdate();
   }
 }
