@@ -16,8 +16,8 @@ import { SwUpdate } from '@angular/service-worker';
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
-    LogUpdateComponent
+    TestComponent,
+    LogUpdateComponent,
   ],
   imports: [
     BrowserModule,
