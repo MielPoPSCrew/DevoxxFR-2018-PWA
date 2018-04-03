@@ -26,7 +26,13 @@
             overflow: auto;
 
             .mat-row {
+                &:hover {
+                    background: rgba(0, 0, 0, .04);
+                }
+
                 .mat-cell {
+                    cursor: pointer;
+
                     &.mat-column-avatar {
                         padding-top: 3px;
                     }
@@ -45,6 +51,7 @@
             position: fixed;
             bottom: 0;
             width: calc(100% - 240px);
+            background: #F5AF33;
         }
     }
 

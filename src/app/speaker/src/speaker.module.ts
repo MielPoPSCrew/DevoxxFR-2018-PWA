@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 // Components
 import { SpeakersListComponent } from './components/list/speakers-list.component';
@@ -32,6 +33,7 @@ const MATERIAL_MODULES = [
 @NgModule({
     imports: [
         CommonModule,
+        RouterModule,
         ...MATERIAL_MODULES
     ],
     declarations: COMPONENTS,
