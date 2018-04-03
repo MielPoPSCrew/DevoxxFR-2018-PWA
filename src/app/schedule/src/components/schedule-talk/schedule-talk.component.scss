@@ -1,0 +1,83 @@
+$mobile-size: 600px;
+
+.schedule-talk {
+    margin: 0 5px 5px 0;
+
+    .mat-card {
+        width: 160px;
+        height: 220px;
+        padding: 10px;
+
+        @media screen and (max-width: $mobile-size) {
+            width: 140px;
+            height: 200px;
+        }
+
+        .mat-card-subtitle {
+            margin-bottom: 10px;
+
+            span {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 1em;
+                color: black;
+
+                @media screen and (max-width: $mobile-size) {
+                    -webkit-line-clamp: 2;
+                }
+            }
+        }
+
+        .speakers {
+            padding-top: 5px;
+            
+            .speaker {
+                display: flex;
+                margin-bottom : 5px;
+
+                span {
+                    height: 24px;
+                    font-size: 0.7em;
+                }
+
+                img {
+                    height: 24px;
+                    width: 24px;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .tags {
+            margin-top: 15px;
+
+            .mat-chip-list{
+                .mat-chip {
+                    padding: 2px 5px;
+                    background: #F5AF33;
+                    border-radius: 2px;
+                    margin: 0 4px 2px 0;
+                }
+            }
+        }
+        
+        .footer {
+            .type {
+                font-size: 0.7em;
+                position: absolute;
+                bottom: 5px;
+                color: #C6C6C6;
+            }
+
+            .fav {
+                position: absolute;
+                bottom: 0;
+                right: 5px;
+                color: #C6C6C6;
+            }
+        }
+    }
+}

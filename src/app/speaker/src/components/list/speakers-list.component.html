@@ -1,0 +1,36 @@
+<div class="speakers-list">
+    <div class="header mat-elevation-z2" [class.isMobile]="mobileQuery.matches">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+    <div class="container mat-elevation-z2" [class.isMobile]="mobileQuery.matches">
+
+        <mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="avatar">
+                <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+                <mat-cell *matCellDef="let row" class="img-cell">
+                    <img src="/assets/default_black.png">
+                    <!-- <img [src]="row.avatarURL" [alt]="row.lastName">  -->
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.firstName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.lastName}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+        </mat-table>
+
+        <mat-paginator *ngIf="!mobileQuery.matches" [pageSizeOptions]="[25, 50, 75, 100]"></mat-paginator>
+    </div>
+</div>

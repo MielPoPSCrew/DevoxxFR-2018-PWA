@@ -25,13 +25,18 @@
     }
   }],
   "dataGroups": [{
-    "name": "from-api",
-    "urls":["/"],
+    "name": "devoxx-api",
+    "urls":[
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/rooms/",
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/speakers",
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/schedules/wednesday",
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/schedules/thursday",
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/schedules/friday"
+    ],
     "cacheConfig": {
-      "strategy":"freshness",
+      "strategy":"performance",
       "maxSize":10000,
-      "maxAge":"1h",
-      "timeout":"5s"
+      "maxAge":"1d"
     }
   }]
 }
