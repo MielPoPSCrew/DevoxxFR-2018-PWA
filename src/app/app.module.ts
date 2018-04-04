@@ -37,7 +37,7 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'schedule', component: ScheduleComponent },
     { path: 'talks', component: TalksListComponent },
-    { path: 'talks/:talksId', component: TalkDetailComponent },
+    { path: 'talks/:talkId', component: TalkDetailComponent },
     { path: 'speakers', component: SpeakersListComponent },
     { path: 'speakers/:speakerId', component: SpeakerDetailComponent },
     { path: 'bookmarks', component: ScheduleComponent },
@@ -53,7 +53,7 @@ const appRoutes: Routes = [
         // TODO improve routing with xxx-routing modules
         RouterModule.forRoot(
             appRoutes,
-            { enableTracing: true } // <-- debugging purposes only
+            { enableTracing: false } // <-- debugging purposes only
         ),
         BrowserModule,
         BrowserAnimationsModule,

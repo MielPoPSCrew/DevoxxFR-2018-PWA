@@ -32,6 +32,12 @@
         margin-top: 20px;
 
         .mat-table {
+            .mat-header-row {
+                .mat-column-type {
+                    max-width: 80px;
+                }
+            }
+
             .mat-row {
                 cursor: pointer;
     
@@ -41,9 +47,9 @@
 
                 .mat-cell {
                     text-align: left;
-                    
+
                     &.mat-column-type {
-                        max-width: 50px;
+                        max-width: 80px;
                     }
                 }
             }
