@@ -2,9 +2,10 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-top: 20px;
 
     .speaker-avatar {
-        margin: 20px 0 10px 0;
+        margin: 0 0 10px 0;
         height: 90px;
 
         img {

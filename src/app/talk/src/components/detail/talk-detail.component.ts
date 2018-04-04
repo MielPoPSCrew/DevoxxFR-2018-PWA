@@ -13,6 +13,8 @@ export class TalkDetailComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        console.log(this.talk);
+    }
 
 }

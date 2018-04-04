@@ -4,6 +4,9 @@
     </div>
 
     <mat-divider></mat-divider>
+    <div class="talk-infos">
+        [{{talk.lang}}] [{{talk.talkType}}]
+    </div>
 
     <div class="talk-track">
         {{talk.track}}
@@ -18,8 +21,8 @@
     <div class="talk-speakers">
         <mat-table [dataSource]="talk.speakers" matSort>
             <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.name }} </mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Speaker </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
