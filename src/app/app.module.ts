@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'schedule', component: ScheduleComponent },
     { path: 'talks', component: TalksListComponent },
-    { path: 'talks/:talksId', component: TalkDetailComponent },
+    { path: 'talks/:talkId', component: TalkDetailComponent },
     { path: 'speakers', component: SpeakersListComponent },
     { path: 'speakers/:speakerId', component: SpeakerDetailComponent },
     { path: 'bookmarks', component: ScheduleComponent },

@@ -7,6 +7,7 @@ $mobile-size: 600px;
         width: 160px;
         height: 220px;
         padding: 10px;
+        cursor: pointer;
 
         @media screen and (max-width: $mobile-size) {
             width: 140px;
@@ -18,7 +19,7 @@ $mobile-size: 600px;
 
             span {
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 4;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -26,43 +27,38 @@ $mobile-size: 600px;
                 color: black;
 
                 @media screen and (max-width: $mobile-size) {
-                    -webkit-line-clamp: 2;
+                    -webkit-line-clamp: 3;
                 }
             }
         }
 
         .speakers {
             padding-top: 5px;
+            padding-left: 10px;
             
             .speaker {
                 display: flex;
                 margin-bottom : 5px;
 
                 span {
-                    height: 24px;
+                    line-height: 30px;
                     font-size: 0.7em;
                 }
-
-                img {
-                    height: 24px;
-                    width: 24px;
-                    margin-right: 10px;
-                }
             }
         }
 
-        .tags {
-            margin-top: 15px;
+        // .tags {
+        //     margin-top: 15px;
 
-            .mat-chip-list{
-                .mat-chip {
-                    padding: 2px 5px;
-                    background: #F5AF33;
-                    border-radius: 2px;
-                    margin: 0 4px 2px 0;
-                }
-            }
-        }
+        //     .mat-chip-list{
+        //         .mat-chip {
+        //             padding: 2px 5px;
+        //             background: #F5AF33;
+        //             border-radius: 2px;
+        //             margin: 0 4px 2px 0;
+        //         }
+        //     }
+        // }
         
         .footer {
             .type {

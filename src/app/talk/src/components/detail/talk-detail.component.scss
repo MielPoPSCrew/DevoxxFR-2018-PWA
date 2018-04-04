@@ -1,0 +1,21 @@
+.talk-detail {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20px;
+
+    .talk-title {
+        font-size: 1.5em;
+        margin: 10px 30px;
+    }
+
+    .talk-summary {
+        text-align: justify;
+        margin: 10px 30px;
+    }
+
+    .mat-divider {
+        border-top-color: #F5AF33;
+        margin: 10px 30px;
+    }
+}

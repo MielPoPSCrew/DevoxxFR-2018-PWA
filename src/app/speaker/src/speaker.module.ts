@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 // Components
 import { SpeakersListComponent } from './components/list/speakers-list.component';
@@ -12,7 +13,9 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule,
+    MatIconModule
 } from '@angular/material';
 
 export const COMPONENTS = [
@@ -26,12 +29,15 @@ const MATERIAL_MODULES = [
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule,
+    MatIconModule
 ];
 
 @NgModule({
     imports: [
         CommonModule,
+        RouterModule,
         ...MATERIAL_MODULES
     ],
     declarations: COMPONENTS,

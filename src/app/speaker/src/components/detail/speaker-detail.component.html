@@ -1,3 +1,46 @@
 <div class="speaker-detail">
-  Speaker Detail works !
+    <div class="speaker-avatar">
+        <!-- <img src="/assets/default_black.png" [alt]="row.lastName"> -->
+        <img [src]="speaker.avatarURL" [alt]="speaker.lastName"> 
+    </div>
+
+    <div class="speaker-flag">
+        [fr]
+    </div>
+
+    <div class="speaker-name">
+        {{speaker.firstName}} {{speaker.lastName}}
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="speaker-bio">
+        {{speaker.bio}}
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="speaker-links">
+        <!-- TODO redirections car là.. lol -->
+        <img src="assets/twitter.png" [alt]="speaker.twitter">
+        <mat-icon matListIcon>link</mat-icon>
+    </div>
+
+    <div class="speaker-talks">
+        <mat-table [dataSource]="speaker.acceptedTalks" matSort>
+            <ng-container matColumnDef="type">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+                <mat-cell *matCellDef="let row"> [icon] </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="title">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Talk </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/talks/{{row.id}}">
+            </mat-row>
+        </mat-table>
+    </div>
 </div>

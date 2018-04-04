@@ -1,7 +1,7 @@
 <div class="speakers-list">
     <div class="header mat-elevation-z2" [class.isMobile]="mobileQuery.matches">
         <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
         </mat-form-field>
     </div>
 
@@ -11,7 +11,7 @@
             <ng-container matColumnDef="avatar">
                 <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
                 <mat-cell *matCellDef="let row" class="img-cell">
-                    <img src="/assets/default_black.png">
+                    <img src="/assets/default_black.png" [alt]="row.lastName">
                     <!-- <img [src]="row.avatarURL" [alt]="row.lastName">  -->
                 </mat-cell>
             </ng-container>
@@ -27,7 +27,7 @@
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/speakers/{{row.uuid}}">
             </mat-row>
         </mat-table>
 
