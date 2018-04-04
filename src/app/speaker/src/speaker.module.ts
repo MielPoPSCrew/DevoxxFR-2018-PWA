@@ -13,7 +13,9 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule,
+    MatIconModule
 } from '@angular/material';
 
 export const COMPONENTS = [
@@ -27,7 +29,9 @@ const MATERIAL_MODULES = [
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule,
+    MatIconModule
 ];
 
 @NgModule({

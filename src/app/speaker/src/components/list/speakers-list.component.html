@@ -11,7 +11,7 @@
             <ng-container matColumnDef="avatar">
                 <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
                 <mat-cell *matCellDef="let row" class="img-cell">
-                    <img src="/assets/default_black.png">
+                    <img src="/assets/default_black.png" [alt]="row.lastName">
                     <!-- <img [src]="row.avatarURL" [alt]="row.lastName">  -->
                 </mat-cell>
             </ng-container>

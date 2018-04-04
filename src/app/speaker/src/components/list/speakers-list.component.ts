@@ -27,7 +27,7 @@ export class SpeakersListComponent implements OnInit, OnDestroy {
      }
 
     ngOnInit() {
-        console.log(mockAPISpeakers);
+        console.log('mockAPISpeakers', mockAPISpeakers);
         this.dataSource = new MatTableDataSource(mockAPISpeakers);
      }
 
