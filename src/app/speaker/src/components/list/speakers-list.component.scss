@@ -25,6 +25,12 @@
         .mat-table {
             overflow: auto;
 
+            .mat-header-row {
+                .mat-column-avatar {
+                    max-width: 100px;
+                }
+            }
+
             .mat-row {
                 cursor: pointer;
 
@@ -35,6 +41,7 @@
                 .mat-cell {
                     &.mat-column-avatar {
                         padding-top: 3px;
+                        max-width: 100px;
                     }
 
                     img {

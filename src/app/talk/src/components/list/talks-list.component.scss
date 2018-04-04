@@ -27,7 +27,7 @@
 
             .mat-header-row {
                 .mat-column-type {
-                    max-width: 100px;
+                    max-width: 60px;
                 }
 
                 .mat-column-lang {
@@ -44,7 +44,7 @@
                 
                 .mat-cell {
                     &.mat-column-type {
-                        max-width: 100px;
+                        max-width: 60px;
                     }
 
                     &.mat-column-lang {
@@ -62,5 +62,4 @@
             background: #F5AF33;
         }
     }
-
 }

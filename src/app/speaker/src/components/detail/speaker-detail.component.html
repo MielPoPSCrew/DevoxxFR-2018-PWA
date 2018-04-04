@@ -34,12 +34,12 @@
             </ng-container>
 
             <ng-container matColumnDef="title">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Talk </mat-header-cell>
                 <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/talks/{{row.id}}">
             </mat-row>
         </mat-table>
     </div>
