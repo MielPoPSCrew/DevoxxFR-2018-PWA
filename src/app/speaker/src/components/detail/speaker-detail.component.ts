@@ -9,7 +9,7 @@ import { mockAPISpeaker } from '../../../../mocks/mockAPISpeaker';
 })
 export class SpeakerDetailComponent implements OnInit {
 
-    displayedColumns = ['title', 'track'];
+    displayedColumns = ['type', 'title'];
     public speaker = mockAPISpeaker;
 
     constructor() { }
@@ -18,4 +18,7 @@ export class SpeakerDetailComponent implements OnInit {
         console.log('mockAPISpeaker', mockAPISpeaker);
     }
 
+    goTo(url: String) {
+        console.log(url);
+    }
 }

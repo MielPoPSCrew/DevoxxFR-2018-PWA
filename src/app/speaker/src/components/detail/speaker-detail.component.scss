@@ -38,6 +38,14 @@
                 &:hover {
                     background: rgba(0, 0, 0, .04);
                 }
+
+                .mat-cell {
+                    text-align: left;
+                    
+                    &.mat-column-type {
+                        max-width: 50px;
+                    }
+                }
             }
         }
 
