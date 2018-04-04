@@ -19,8 +19,8 @@ export class Speaker {
 
         speaker.uuid = json['uuid'];
         speaker.bio = json['bio'];
-        speaker.firstName = json['firstName'];
-        speaker.lastName = json['lastName'];
+        speaker.firstName = Speaker.cleanIdentity(json['firstName']);
+        speaker.lastName = Speaker.cleanIdentity(json['lastName']);
         speaker.avatarURL = json['avatarURL'];
         speaker.company = json['company'];
         speaker.blog = json['blog'];

@@ -46,11 +46,22 @@ export class SpeakersService {
           return this.requestSpeaker(speaker.uuid);
         }),
         toArray(),
+        map(array => array.sort(this.sortSpeakers)),
         share()
       );
 
       return this.speakers$;
     }
+  }
+
+  private sortSpeakers(a: Speaker, b: Speaker) {
+    if (a.lastName < b.lastName) {
+      return -1;
+    }
+    if ( a.lastName > b.lastName) {
+      return 1;
+    }
+    return 0;
   }
 
   private requestSpeaker(uuid: string): Observable<Speaker> {
