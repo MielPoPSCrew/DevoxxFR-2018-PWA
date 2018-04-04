@@ -38,4 +38,8 @@ export class Event {
         return event;
     }
 
+    public isTalk(): boolean {
+        return this.talk !== null && this.talk !== undefined;
+    }
+
 }
