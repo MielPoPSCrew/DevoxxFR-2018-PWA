@@ -13,7 +13,7 @@ export class SpeakersService {
   private speakers$: Observable<Speaker[]>;
 
   constructor(private http: HttpClient) {
-    this.requestSpeakers().subscribe();
+    this.requestSpeakers().subscribe(data => console.log('speakers', data));
   }
 
   public getSpeakers(): Observable<Speaker[]> {

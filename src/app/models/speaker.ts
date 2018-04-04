@@ -10,7 +10,7 @@ export class Speaker {
     blog: string;
     twitter: string;
     lang: string;
-    acceptedTalks: string[];
+    acceptedTalks: AcceptedTalk[];
 
     private constructor() {}
 
@@ -19,7 +19,6 @@ export class Speaker {
 
         speaker.uuid = json['uuid'];
         speaker.bio = json['bio'];
-        speaker.bioAsHtml = json['bioAsHtml'];
         speaker.firstName = json['firstName'];
         speaker.lastName = json['lastName'];
         speaker.avatarURL = json['avatarURL'];
@@ -27,8 +26,34 @@ export class Speaker {
         speaker.blog = json['blog'];
         speaker.twitter = json['twitter'];
         speaker.lang = json['lang'];
-        speaker.acceptedTalks = json['acceptedTalks'];
+        speaker.acceptedTalks = [];
+
+        json['acceptedTalks'].map(
+            talk => {
+                speaker.acceptedTalks.push({
+                    id: talk['id'],
+                    track: talk['track'],
+                    title: talk['title'],
+                    talkType: talk['title']
+                });
+            }
+        );
 
         return speaker;
     }
+
+    public static cleanIdentity(identity: string): string {
+        return identity
+            .toLowerCase()
+            .split(' ')
+            .map(word => word[0].toUpperCase() + word.substr(1))
+            .join(' ');
+    }
+}
+
+interface AcceptedTalk {
+    talkType: string;
+    track: string;
+    id: string;
+    title: string;
 }
