@@ -1,6 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { SpeakersService } from '../../../../services/speakers.service';
 
 import { mockAPISpeakers } from '../../../../mocks/mockAPISpeakers';
 
@@ -12,7 +13,8 @@ import { mockAPISpeakers } from '../../../../mocks/mockAPISpeakers';
 export class SpeakersListComponent implements OnInit, OnDestroy {
 
     displayedColumns = ['avatar', 'firstName', 'lastName'];
-    dataSource: MatTableDataSource<any>;
+    speakersData = null;
+    dataSource = new MatTableDataSource();
     mobileQuery: MediaQueryList;
 
     private _mobileQueryListener: () => void;
@@ -20,16 +22,21 @@ export class SpeakersListComponent implements OnInit, OnDestroy {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
-    constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-        this.mobileQuery = media.matchMedia('(max-width: 600px)');
-        this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-        this.mobileQuery.addListener(this._mobileQueryListener);
+    constructor(
+        changeDetectorRef: ChangeDetectorRef,
+        media: MediaMatcher,
+        speakersService: SpeakersService) {
+            this.mobileQuery = media.matchMedia('(max-width: 600px)');
+            this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+            this.mobileQuery.addListener(this._mobileQueryListener);
+
+            speakersService.getSpeakers().subscribe((data) => {
+                this.speakersData = data;
+                this.dataSource.data = this.speakersData;
+            });
      }
 
-    ngOnInit() {
-        console.log('mockAPISpeakers', mockAPISpeakers);
-        this.dataSource = new MatTableDataSource(mockAPISpeakers);
-     }
+    ngOnInit() { }
 
     // tslint:disable-next-line:use-life-cycle-interface
     ngAfterViewInit() {

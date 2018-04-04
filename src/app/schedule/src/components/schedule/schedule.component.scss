@@ -1,4 +1,10 @@
 .schedule {
     padding: 0 20px;
     margin-top: 20px;
+
+    // TODO remove /deep/ because depracated
+    /deep/ .mat-tab-header {
+        margin-bottom: 20px;
+    }
 }
+
