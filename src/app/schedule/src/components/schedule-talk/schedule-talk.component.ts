@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { InfoModalComponent } from '../info-modal/info-modal.component';
-
 @Component({
     selector: 'app-schedule-talk',
     templateUrl: './schedule-talk.component.html',
@@ -14,5 +13,9 @@ export class ScheduleTalkComponent implements OnInit {
 
     ngOnInit() {
         console.log(this.talk);
+    }
+
+    bookmarkTalk(talkId: string) {
+        console.log('bookmarkTalk', talkId);
     }
 }

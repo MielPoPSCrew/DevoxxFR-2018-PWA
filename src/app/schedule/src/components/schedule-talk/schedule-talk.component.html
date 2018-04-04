@@ -1,30 +1,31 @@
 <div class="schedule-talk">
-    <mat-card (click)="infonav.open()">
-        <mat-card-subtitle>
-            <span>{{talk.title}}</span>
-        </mat-card-subtitle>
+    <mat-card>
+        <div routerLink="/talks/{{talk.id}}">
+            <mat-card-subtitle>
+                <span>{{talk.title}}</span>
+            </mat-card-subtitle>
 
-        <mat-divider></mat-divider>
+            <mat-divider></mat-divider>
 
-        <div class="speakers">
-           <div class="speaker" *ngFor="let speaker of talk.speakers | slice:0:3">
-               <img mat-card-avatar src="http://www.gravatar.com/avatar/493f5803d30d7583bf1bdf4b237b9186"> 
-               <span>{{speaker.name}}</span>
-           </div> 
+            <div class="speakers">
+                <div class="speaker" *ngFor="let speaker of talk.speakers | slice:0:3">
+                    <span>{{speaker.name}}</span>
+                </div>
+            </div>
+
+            <mat-divider></mat-divider>
         </div>
 
-        <mat-divider></mat-divider>
-
-        <div class="tags">
+        <!-- <div class="tags">
             <mat-chip-list>
                 <mat-chip *ngFor="let word of talk.track">{{word}}</mat-chip>
             </mat-chip-list>
-        </div>
+        </div> -->
 
         <div class="footer">
             <!-- TODO flag -->
             <div class="type">[{{talk.lang}}] {{talk.type}}</div>
-            <div class="fav">
+            <div class="fav" (click)="bookmarkTalk(talk.id);">
                 <mat-icon>star</mat-icon>
             </div>
         </div>
