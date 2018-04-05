@@ -36,6 +36,14 @@ export class EventsService {
       );
   }
 
+  public getSlotIdByTalkId(talkId: string): Observable<String> {
+    return this.getTalks().pipe(
+      mergeMap(event => event),
+      single(event => event.talk.id === talkId),
+      map(event => event.slotId)
+    );
+  }
+
   public getTalks(): Observable<Event[]> {
     return this.getEvents().pipe(
       mergeMap(event => event),
