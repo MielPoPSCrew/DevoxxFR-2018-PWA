@@ -5,7 +5,7 @@
 
     <mat-divider></mat-divider>
     <div class="talk-infos">
-        [{{talk.lang}}] [{{talk.talkType}}]
+        <img matTooltip="{{ talk.lang }}" src="{{ env.flags[talk.lang] }}"/> <i class="material-icons" matTooltip="{{ talk.talkType }}">{{ env.icons[talk.talkType] }}</i>
     </div>
 
     <div class="talk-track">

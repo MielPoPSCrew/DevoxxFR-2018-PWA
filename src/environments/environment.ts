@@ -15,5 +15,9 @@ export const environment = {
     "Keynote": 'label_outline',
     "Ignite Sessions": 'whatshot',
     "Autres formats de conférence": 'chevron_right'
+  },
+  flags: {
+    fr: '/assets/flag_fr.png',
+    en: '/assets/flag_en.png'
   }
 };
