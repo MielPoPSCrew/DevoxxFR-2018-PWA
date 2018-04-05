@@ -1,7 +1,7 @@
 <div class="speaker-detail" *ngIf="speaker">
     <div class="speaker-avatar">
-        <img *ngIf="speaker.avatarURL === null" src="/assets/default_black.png" [alt]="speaker.lastName" >
-        <img *ngIf="speaker.avatarURL !== null" [src]="speaker.avatarURL" [alt]="speaker.lastName" (error)="errorHandler($event)"> 
+        <img *ngIf="speaker.avatarURL === null" src="/assets/default_black.png" [alt]="speaker.lastName">
+        <img *ngIf="speaker.avatarURL !== null" [src]="speaker.avatarURL" [alt]="speaker.lastName" (error)="errorHandler($event)">
     </div>
 
     <div class="speaker-name">
@@ -9,8 +9,8 @@
     </div>
 
     <div class="speaker-flag">
-            <img matTooltip="{{ speaker.lang }}" src="{{ env.flags[speaker.lang] }}"/>
-        </div>
+        <img matTooltip="{{ speaker.lang }}" src="{{ env.flags[speaker.lang] }}" />
+    </div>
 
     <mat-divider></mat-divider>
 
@@ -27,7 +27,7 @@
         <a href="{{ speaker.blog }}" target="_blank" *ngIf="speaker.blog">
             <mat-icon matListIcon>link</mat-icon>
         </a>
-        
+
     </div>
 
     <div class="speaker-talks">
@@ -37,7 +37,7 @@
                 <mat-cell *matCellDef="let row">
                     <i class="material-icons" matTooltip="{{ row.talkType }}">{{ env.icons[row.talkType] }}</i>
                 </mat-cell>
-                
+
             </ng-container>
 
             <ng-container matColumnDef="title">
