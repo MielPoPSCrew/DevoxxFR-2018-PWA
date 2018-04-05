@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { SchedulePeriodeComponent } from './components/schedule-periode/schedule-periode.component';
 import { ScheduleTalkComponent } from './components/schedule-talk/schedule-talk.component';
+import { ScheduleBreakComponent } from './components/schedule-break/schedule-break.component';
 import { InfoModalComponent } from './components/info-modal/info-modal.component';
 
 // Material
@@ -22,6 +23,7 @@ export const COMPONENTS = [
     ScheduleComponent,
     SchedulePeriodeComponent,
     ScheduleTalkComponent,
+    ScheduleBreakComponent,
     InfoModalComponent
 ];
 
