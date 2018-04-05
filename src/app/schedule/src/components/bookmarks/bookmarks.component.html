@@ -1,0 +1,13 @@
+<div class="schedule">
+    <mat-tab-group >
+        <mat-tab label="Wednesday">
+            <app-schedule-periode *ngFor="let periode of schedule.wednesday" [periode]="periode"></app-schedule-periode>
+        </mat-tab>
+        <mat-tab label="Thursday">
+            <app-schedule-periode *ngFor="let periode of schedule.thursday" [periode]="periode"></app-schedule-periode>
+        </mat-tab>
+        <mat-tab label="Friday">
+            <app-schedule-periode *ngFor="let periode of schedule.friday" [periode]="periode"></app-schedule-periode>
+        </mat-tab>
+    </mat-tab-group>
+</div>
