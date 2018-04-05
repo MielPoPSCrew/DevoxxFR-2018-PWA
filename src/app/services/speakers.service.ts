@@ -5,6 +5,7 @@ import { map, toArray, single, mergeMap, flatMap, share } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { Speaker } from '../models/speaker';
+import * as cloneDeep from 'lodash/cloneDeep';
 
 @Injectable()
 export class SpeakersService {

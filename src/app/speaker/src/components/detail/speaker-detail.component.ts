@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SpeakersService } from '../../../../services/speakers.service';
 import { ActivatedRoute } from '@angular/router';
 import { EventsService } from '../../../../services/events.service';
+import { environment } from '../../../../../environments/environment';
+import { Speaker } from '../../../../models/speaker';
 
 @Component({
     selector: 'app-speaker',
@@ -11,7 +13,9 @@ import { EventsService } from '../../../../services/events.service';
 export class SpeakerDetailComponent implements OnInit {
 
     displayedColumns = ['type', 'title'];
-    public speaker: any;
+    env = environment;
+
+    public speaker: Speaker;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -19,21 +23,14 @@ export class SpeakerDetailComponent implements OnInit {
         private eventsService: EventsService) {
     }
 
-    ngOnInit() { 
+    ngOnInit() {
         this.activatedRoute.params.subscribe((params) => {
             const speakerId = params['speakerId'];
             console.log('speakerId', speakerId);
 
             this.speakersService.getSpeaker(speakerId).subscribe((data) => {
                 this.speaker = data;
-                console.log('ON LOG LA MDR', this.speaker);
-                this.speaker.acceptedTalks.map((talk) => {
-                    this.eventsService.getSlotIdByTalkId(talk.id).subscribe((slotId) => {
-                        talk.id = slotId;
-                    });
-
-                    console.log(this.speaker);
-                });
+                console.log(this.speaker);
             });
         });
     }
