@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EventsService } from '../../../../services/events.service';
+import { ActivatedRoute } from '@angular/router';
 
 import { mockAPITalk } from '../../../../mocks/mockAPITalk';
 @Component({
@@ -11,10 +13,20 @@ export class TalkDetailComponent implements OnInit {
     displayedColumns = ['name'];
     public talk = mockAPITalk;
 
-    constructor() { }
+    constructor(
+        activatedRoute: ActivatedRoute,
+        eventsService: EventsService) {
+            // activatedRoute.params.subscribe((params) => {
+            //     const id = params['talkId'];
+            //     console.log(id);
+            //     eventsService.getTalk(id).subscribe((data) => {
+            //         this.talk = data;
+            //         console.log(this.speaker);
+            //     });
+            // });
+     }
 
-    ngOnInit() { 
+    ngOnInit() {
         console.log(this.talk);
     }
-
 }
