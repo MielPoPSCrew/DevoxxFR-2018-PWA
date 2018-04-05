@@ -8,6 +8,10 @@
         {{speaker.firstName}} {{speaker.lastName}}
     </div>
 
+    <div class="speaker-company">
+        {{speaker.company}}
+    </div>
+
     <div class="speaker-flag">
             <img matTooltip="{{ speaker.lang }}" src="{{ env.flags[speaker.lang] }}"/>
         </div>
@@ -31,7 +35,7 @@
             <ng-container matColumnDef="type">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
                 <mat-cell *matCellDef="let row">
-                    <i class="material-icons" matTooltip="{{ row.talkType }}">{{ env.icons[row.talkType] }}</i>
+                    <i class="material-icons" matTooltip="{{ row.talkType }}">{{ env.icons[row.talkType] }}</i> 
                 </mat-cell>
                 
             </ng-container>
