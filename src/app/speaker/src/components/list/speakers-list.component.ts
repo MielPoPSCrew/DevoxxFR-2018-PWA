@@ -50,7 +50,6 @@ export class SpeakersListComponent implements OnInit, OnDestroy {
     }
 
     errorHandler(event) {
-        console.log(event);
         event.target.src = '/assets/default_black.png';
     }
 

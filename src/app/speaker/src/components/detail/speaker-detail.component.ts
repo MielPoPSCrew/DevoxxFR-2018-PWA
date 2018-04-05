@@ -34,4 +34,8 @@ export class SpeakerDetailComponent implements OnInit {
             });
         });
     }
+
+    errorHandler(event) {
+        event.target.src = '/assets/default_black.png';
+    }
 }

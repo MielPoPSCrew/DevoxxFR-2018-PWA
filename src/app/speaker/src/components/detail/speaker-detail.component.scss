@@ -4,14 +4,6 @@
     text-align: center;
     margin-top: 20px;
 
-    .speaker-flag {
-
-        img {
-            height: 24px;
-            width: auto;
-        }
-    }
-
     .speaker-avatar {
         margin: 0 0 10px 0;
         height: 90px;
@@ -28,20 +20,34 @@
         font-size: 1.3em;
     }
 
+    .speaker-flag {
+        margin-top: 5px;
+
+        img {
+            height: 24px;
+            width: auto;
+        }
+    }
+
     .speaker-bio {
         margin: 0 30px;
         text-align: justify;
     }
 
     .speaker-links {
-        img {
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-        }
+        a {
+            text-decoration: none;
 
-        .mat-icon {
-            cursor: pointer;
+            img {
+                cursor: pointer;
+                width: 24px;
+                height: 24px;
+            }
+    
+            .mat-icon {
+                cursor: pointer;
+                color: black;
+            }
         }
     }
 
