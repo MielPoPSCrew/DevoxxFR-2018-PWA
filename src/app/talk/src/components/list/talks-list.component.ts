@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { environment } from '../../../../../environments/environment'
 import { EventsService } from '../../../../services/events.service';
 
 import { mockAPITalks } from '../../../../mocks/mockAPITalks';
@@ -16,6 +17,7 @@ export class TalksListComponent implements OnInit, OnDestroy {
     talksData = null;
     dataSource = new MatTableDataSource();
     mobileQuery: MediaQueryList;
+    env = environment;
 
     private _mobileQueryListener: () => void;
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+
 // Components
 import { TalksListComponent } from './components/list/talks-list.component';
 import { TalkDetailComponent } from './components/detail/talk-detail.component';
@@ -15,7 +16,8 @@ import {
     MatTableModule,
     MatCardModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
 } from '@angular/material';
 
 export const COMPONENTS = [
@@ -31,7 +33,8 @@ const MATERIAL_MODULES = [
     MatTableModule,
     MatCardModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
 import { EventsService } from '../../../../services/events.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,6 +11,7 @@ import { mockAPITalk } from '../../../../mocks/mockAPITalk';
 })
 export class TalkDetailComponent implements OnInit {
 
+    env = environment;
     displayedColumns = ['name'];
     public talk = mockAPITalk;
 
