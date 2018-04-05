@@ -6,14 +6,14 @@
 export const environment = {
   production: false,
   icons: {
-    conf: 'record_voice_over',
-    uni: 'school',
-    tia: 'build',
-    lab: 'developer_mode',
-    quick: 'timer',
-    bof: 'group_work',
-    key: 'label_outline',
-    ignite: 'whatshot',
-    other: 'chevron_right'
+    "Conference": 'record_voice_over',
+    "University": 'school',
+    "Tools-in-Action": 'build',
+    "Hands-on Labs": 'developer_mode',
+    "Quickie": 'timer',
+    "BOF (Bird of a Feather)": 'group_work',
+    "Keynote": 'label_outline',
+    "Ignite Sessions": 'whatshot',
+    "Autres formats de conférence": 'chevron_right'
   }
 };
