@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SpeakersService } from '../../../../services/speakers.service';
 import { ActivatedRoute } from '@angular/router';
 
-import { mockAPISpeaker } from '../../../../mocks/mockAPISpeaker';
-
 @Component({
     selector: 'app-speaker',
     templateUrl: './speaker-detail.component.html',

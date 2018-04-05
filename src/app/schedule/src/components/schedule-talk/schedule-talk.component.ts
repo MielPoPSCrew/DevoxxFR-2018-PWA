@@ -7,7 +7,7 @@ import { InfoModalComponent } from '../info-modal/info-modal.component';
 })
 export class ScheduleTalkComponent implements OnInit {
 
-    @Input('talk') talk: String;
+    @Input('talk') talk: any;
 
     constructor() { }
 

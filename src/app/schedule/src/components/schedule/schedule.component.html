@@ -1,13 +1,13 @@
 <div class="schedule">
-    <mat-tab-group>
-        <mat-tab label="Wednesday" style="margin-bottom: 20px;">
-            <app-schedule-periode *ngFor="let periode of mockSchedule.wednesday.periodes" [periode]="periode"></app-schedule-periode>
+    <mat-tab-group >
+        <mat-tab label="Wednesday">
+            <app-schedule-periode *ngFor="let periode of schedule.wednesday" [periode]="periode"></app-schedule-periode>
         </mat-tab>
         <mat-tab label="Thursday">
-            <app-schedule-periode *ngFor="let periode of mockSchedule.wednesday.periodes" [periode]="periode"></app-schedule-periode>
+            <app-schedule-periode *ngFor="let periode of schedule.thursday" [periode]="periode"></app-schedule-periode>
         </mat-tab>
         <mat-tab label="Friday">
-            <app-schedule-periode *ngFor="let periode of mockSchedule.wednesday.periodes" [periode]="periode"></app-schedule-periode>
+            <app-schedule-periode *ngFor="let periode of schedule.friday" [periode]="periode"></app-schedule-periode>
         </mat-tab>
     </mat-tab-group>
 </div>

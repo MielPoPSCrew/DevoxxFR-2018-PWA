@@ -10,21 +10,25 @@
         <mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="type">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
-                <mat-cell *matCellDef="let row"><i class="material-icons" matTooltip="{{ row.talkType }}">{{ env.icons[row.talkType] }}</i></mat-cell>
+                <mat-cell *matCellDef="let row">
+                    <i class="material-icons" matTooltip="{{ row.talk.talkType }}">{{ env.icons[row.talk.talkType] }}</i>
+                </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="lang">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Langue </mat-header-cell>
-                <mat-cell *matCellDef="let row"><img matTooltip="{{ row.lang }}" src="{{ env.flags[row.lang] }}"/></mat-cell>
+                <mat-cell *matCellDef="let row">
+                    <img matTooltip="{{ row.talk.lang }}" src="{{ env.flags[row.talk.lang] }}"/>
+                </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="title">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.talk.title}} </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/talks/{{row.id}}">
+            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/talks/{{row.talk.id}}">
             </mat-row>
         </mat-table>
 

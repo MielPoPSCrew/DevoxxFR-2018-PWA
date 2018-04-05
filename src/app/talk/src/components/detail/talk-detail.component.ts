@@ -3,7 +3,6 @@ import { environment } from '../../../../../environments/environment';
 import { EventsService } from '../../../../services/events.service';
 import { ActivatedRoute } from '@angular/router';
 
-import { mockAPITalk } from '../../../../mocks/mockAPITalk';
 @Component({
     selector: 'app-talk-detail',
     templateUrl: './talk-detail.component.html',
@@ -13,22 +12,19 @@ export class TalkDetailComponent implements OnInit {
 
     env = environment;
     displayedColumns = ['name'];
-    public talk = mockAPITalk;
 
     constructor(
-        activatedRoute: ActivatedRoute,
-        eventsService: EventsService) {
-            // activatedRoute.params.subscribe((params) => {
-            //     const id = params['talkId'];
-            //     console.log(id);
-            //     eventsService.getTalk(id).subscribe((data) => {
-            //         this.talk = data;
-            //         console.log(this.speaker);
-            //     });
-            // });
-     }
+        private activatedRoute: ActivatedRoute,
+        private eventsService: EventsService) { }
 
     ngOnInit() {
-        console.log(this.talk);
+        // this.activatedRoute.params.subscribe((params) => {
+        //     const id = params['talkId'];
+        //     console.log(id);
+        //     this.eventsService.getTalk(id).subscribe((data) => {
+        //         this.talk = data;
+        //         console.log(this.speaker);
+        //     });
+        // });
     }
 }

@@ -16,6 +16,11 @@ $mobile-size: 600px;
 
         .mat-card-subtitle {
             margin-bottom: 10px;
+            height: 64px;
+
+            @media screen and (max-width: $mobile-size) {
+                height: 48px;
+            }
 
             span {
                 display: -webkit-box;
