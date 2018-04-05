@@ -1,0 +1,11 @@
+<div class="schedule-periode">
+    <mat-card>
+        <mat-card-subtitle>
+            {{periode.start}}
+        </mat-card-subtitle>
+    </mat-card>
+
+    <div class="talks">
+        <app-schedule-talk *ngFor="let talk of periode.talks" [talk]="talk"></app-schedule-talk>
+    </div>
+</div>

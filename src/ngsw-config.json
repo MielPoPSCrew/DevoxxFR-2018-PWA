@@ -23,5 +23,20 @@
         "/assets/**"
       ]
     }
+  }],
+  "dataGroups": [{
+    "name": "devoxx-api",
+    "urls":[
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/rooms/",
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/speakers",
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/schedules/wednesday",
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/schedules/thursday",
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/schedules/friday"
+    ],
+    "cacheConfig": {
+      "strategy":"performance",
+      "maxSize":10000,
+      "maxAge":"1d"
+    }
   }]
 }

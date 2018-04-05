@@ -1,0 +1,25 @@
+<div class="layout" [class.isMobile]="mobileQuery.matches">
+    <mat-toolbar>
+        <button mat-icon-button (click)="snav.toggle()" *ngIf="mobileQuery.matches">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <h1 class="title">Devoxx 2018</h1>
+    </mat-toolbar>
+
+    <mat-sidenav-container [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <mat-list-item routerLink="{{item.link}}" *ngFor="let item of menu" (click)="mobileQuery.matches && snav.toggle()">
+                    <mat-icon matListIcon>{{item.icon}}</mat-icon>
+                    <p matLine>{{item.title}}</p>
+                    <mat-divider *ngIf="item.withDivider"></mat-divider>
+                </mat-list-item>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
