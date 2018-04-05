@@ -22,7 +22,7 @@ export class LayoutComponent implements OnDestroy {
     mobileQuery: MediaQueryList;
 
     private _mobileQueryListener: () => void;
-    private menu = env.menu;
+    public menu = env.menu;
 
     constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');

@@ -3,8 +3,6 @@ import { Component, OnInit, ViewChild, OnDestroy, ChangeDetectorRef } from '@ang
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { SpeakersService } from '../../../../services/speakers.service';
 
-import { mockAPISpeakers } from '../../../../mocks/mockAPISpeakers';
-
 @Component({
     selector: 'app-speakers-list',
     templateUrl: './speakers-list.component.html',

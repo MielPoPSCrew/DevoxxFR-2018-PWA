@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { mockAPISchedule } from '../../../../mocks/mockAPISchedule';
 import { EventsService } from '../../../../services/events.service';
-
-import { mockSchedule } from '../../../../mocks/mockSchedule';
 
 import * as _ from 'lodash';
 
@@ -13,7 +10,6 @@ import * as _ from 'lodash';
 })
 export class ScheduleComponent implements OnInit {
 
-    public mockSchedule = mockSchedule;
     public eventsData: any[];
     public schedule: any;
 
