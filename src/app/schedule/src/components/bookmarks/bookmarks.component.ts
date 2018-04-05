@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../../../services/events.service';
 import { FavoriteTalksService } from '../../../../services/favorites.service';
 import { Event } from '../../../../models/event';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-bookmarks',
