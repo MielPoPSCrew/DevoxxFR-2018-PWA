@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RoomsService } from './services/rooms.service';
 import { EventsService } from './services/events.service';
 import { SpeakersService } from './services/speakers.service';
 
@@ -13,7 +12,6 @@ export class AppComponent {
 
     // Retrieved data when application start
     constructor(
-        private rooms: RoomsService,
         private events: EventsService,
         private speakers: SpeakersService,
     ) { }

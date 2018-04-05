@@ -28,7 +28,6 @@ import { TalkDetailComponent } from './talk/src/components/detail/talk-detail.co
 import { HomeComponent } from './core/src/components/home/home.component';
 
 // Custom Providers
-import { RoomsService } from './services/rooms.service';
 import { EventsService } from './services/events.service';
 import { SpeakersService } from './services/speakers.service';
 
@@ -69,7 +68,6 @@ const appRoutes: Routes = [
     ],
     providers: [
         SwUpdate,
-        RoomsService,
         EventsService,
         SpeakersService,
     ],

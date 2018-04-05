@@ -5,7 +5,7 @@ export class Room {
     capacity: Number;
     setup: string;
 
-    private constructor() {}
+    public constructor() {}
 
     public static fromJson(json: any): Room {
         const event: Room = new Room();

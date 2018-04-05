@@ -13,7 +13,7 @@ export class SpeakersService {
   private speakers$: Observable<Speaker[]>;
 
   constructor(private http: HttpClient) {
-    this.requestSpeakers().subscribe();
+    this.requestSpeakers().subscribe(data => console.log('speakers', data));
   }
 
   public getSpeakers(): Observable<Speaker[]> {
@@ -46,11 +46,22 @@ export class SpeakersService {
           return this.requestSpeaker(speaker.uuid);
         }),
         toArray(),
+        map(array => array.sort(this.sortSpeakers)),
         share()
       );
 
       return this.speakers$;
     }
+  }
+
+  private sortSpeakers(a: Speaker, b: Speaker) {
+    if (a.lastName < b.lastName) {
+      return -1;
+    }
+    if ( a.lastName > b.lastName) {
+      return 1;
+    }
+    return 0;
   }
 
   private requestSpeaker(uuid: string): Observable<Speaker> {

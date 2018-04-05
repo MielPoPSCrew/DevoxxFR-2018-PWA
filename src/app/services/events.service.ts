@@ -4,9 +4,8 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
 import { AppConstants } from '../app-constants';
 import { Event } from '../models/event';
-import { map, flatMap, toArray, switchMap, tap, take, filter, share } from 'rxjs/operators';
-import { RoomsService } from './rooms.service';
-import { SpeakersService } from './speakers.service';
+import { map, flatMap, toArray, switchMap, tap, filter, share, mergeMap} from 'rxjs/operators';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 
 @Injectable()
 export class EventsService {
@@ -17,8 +16,44 @@ export class EventsService {
   private fridayEvents: Event[] = [];
   private events$: Observable<Event[]>;
 
-  constructor(private http: HttpClient, private rooms: RoomsService, private speakers: SpeakersService) {
-    this.requestEventsForDay(AppConstants.API_SCHEDULES_FRIDAY).pipe(tap(data => console.log('friday', data))).subscribe();
+  constructor(private http: HttpClient) {
+    this.getEvents().subscribe(data => console.log('event', data));
+  }
+
+  public getTalks(): Observable<Event[]> {
+    return this.getEvents().pipe(
+      mergeMap(event => event),
+      filter(event => event.isTalk()),
+      toArray()
+    );
+  }
+
+  public getEvents(): Observable<Event[]> {
+    if (this.events.length > 0) {
+      console.log('cache');
+      return of(this.events);
+    } else if (this.events$) {
+      console.log('merge');
+      return this.events$;
+    } else {
+      console.log('retrieved');
+
+      this.events$ =  forkJoin(
+        this.requestEventsForDay(AppConstants.API_SCHEDULES_WEDNESDAY),
+        this.requestEventsForDay(AppConstants.API_SCHEDULES_THURSDAY),
+        this.requestEventsForDay(AppConstants.API_SCHEDULES_FRIDAY)
+      ).pipe(
+        map(([s1, s2, s3]) => [...s1, ...s2, ...s3]),
+        map(result => {
+          this.events = result;
+          this.events$ = null;
+          return result;
+        }),
+        share()
+      );
+
+      return this.events$;
+    }
   }
 
   private requestEventsForDay(uri: string): Observable<Event[]> {
@@ -36,45 +71,9 @@ export class EventsService {
   private requestEvents(): Observable<Event[]> {
     return null;
   }
-  // if talk
-  // slot.speakers => []
-  // flatMap [] => link.href.getSpeakerId
-  // flatMap id => this.speakers.get(id)
-  // toArray
+
   private eventFromSlot(slot: Slot): Observable<Event> {
-    if (slot.talk) {
-      return of(Event.fromJson(slot)).pipe(
-        // Associate room to event
-        switchMap(event => this.rooms.getRoom(slot.roomId).pipe(
-          tap(a => console.log('-slot' + slot.slotId + ' - executed1')),
-          map(room => {
-            event.room = room;
-            return event;
-          })
-        )),
-        // Associate each speakers to the talk
-        switchMap(event => of(slot.talk.speakers).pipe(
-          tap(a => console.log),
-          flatMap(speakersLinks => speakersLinks),
-          map(speakerLink => {
-            const speakerUid = speakerLink.link.href.substr(speakerLink.link.href.lastIndexOf('/') + 1);
-            event.talk.speakers.push(speakerUid);
-            return event;
-          })
-        ))
-      );
-    } else {
-      return of(Event.fromJson(slot)).pipe(
-        // Associate room to event
-        switchMap(event => this.rooms.getRoom(slot.roomId).pipe(
-          tap(a => console.log('slot' + slot.slotId + ' - executed2')),
-          map(room => {
-            event.room = room;
-            return event;
-          })
-        )),
-      );
-    }
+    return of(Event.fromJson(slot));
   }
 }
 

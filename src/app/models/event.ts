@@ -29,7 +29,17 @@ export class Event {
         event.break = json['break'] == null ? null : Break.fromJson(json['break']);
         event.talk = json['talk'] == null ? null : Talk.fromJson(json['talk']);
 
+        event.room = new Room();
+        event.room.id = json['roomId'];
+        event.room.capacity = json['roomCapacity'];
+        event.room.setup = json['roomSetup'];
+        event.room.name = json['roomName'];
+
         return event;
+    }
+
+    public isTalk(): boolean {
+        return this.talk !== null && this.talk !== undefined;
     }
 
 }
