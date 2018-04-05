@@ -14,6 +14,22 @@
         margin: 10px 30px;
     }
 
+    .talk-speakers {
+        .mat-table {
+            .mat-row {
+                cursor: pointer;
+    
+                &:hover {
+                    background: rgba(0, 0, 0, .04);
+                }
+
+                .mat-cell {
+                    text-align: left;
+                }
+            }
+        }
+    }
+
     .mat-divider {
         border-top-color: #F5AF33;
         margin: 10px 30px;
