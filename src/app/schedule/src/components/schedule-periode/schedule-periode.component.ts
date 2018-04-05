@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SchedulePeriodeComponent implements OnInit {
 
-    @Input('periode') periode: String;
+    @Input('periode') periode: any;
 
     constructor() { }
 
