@@ -4,5 +4,20 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  icons: {
+    "Conference": 'record_voice_over',
+    "University": 'school',
+    "Tools-in-Action": 'build',
+    "Hands-on Labs": 'developer_mode',
+    "Quickie": 'timer',
+    "BOF (Bird of a Feather)": 'group_work',
+    "Keynote": 'label_outline',
+    "Ignite Sessions": 'whatshot',
+    "Autres formats de conférence": 'chevron_right'
+  },
+  flags: {
+    fr: '/assets/flag_fr.png',
+    en: '/assets/flag_en.png'
+  }
 };

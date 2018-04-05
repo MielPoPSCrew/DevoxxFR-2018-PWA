@@ -1,0 +1,16 @@
+<div class="schedule">
+    <mat-tab-group>
+        <mat-tab label="Wednesday" style="margin-bottom: 20px;">
+            <app-schedule-periode *ngFor="let periode of mockSchedule.wednesday.periodes" [periode]="periode"></app-schedule-periode>
+        </mat-tab>
+        <mat-tab label="Thursday">
+            <app-schedule-periode *ngFor="let periode of mockSchedule.wednesday.periodes" [periode]="periode"></app-schedule-periode>
+        </mat-tab>
+        <mat-tab label="Friday">
+            <app-schedule-periode *ngFor="let periode of mockSchedule.wednesday.periodes" [periode]="periode"></app-schedule-periode>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
+<!-- TODO - Evol -->
+<!-- <app-info-modal></app-info-modal> -->

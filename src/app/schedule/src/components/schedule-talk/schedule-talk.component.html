@@ -1,0 +1,34 @@
+<div class="schedule-talk">
+    <mat-card>
+        <div routerLink="/talks/{{talk.id}}">
+            <mat-card-subtitle>
+                <span>{{talk.title}}</span>
+            </mat-card-subtitle>
+
+            <mat-divider></mat-divider>
+
+            <div class="speakers">
+                <div class="speaker" *ngFor="let speaker of talk.speakers | slice:0:3">
+                    <span>{{speaker.name}}</span>
+                </div>
+            </div>
+
+            <mat-divider></mat-divider>
+        </div>
+
+        <!-- <div class="tags">
+            <mat-chip-list>
+                <mat-chip *ngFor="let word of talk.track">{{word}}</mat-chip>
+            </mat-chip-list>
+        </div> -->
+
+        <div class="footer">
+            <!-- TODO flag -->
+            <div class="type">[{{talk.lang}}] {{talk.type}}</div>
+            <div class="fav" (click)="bookmarkTalk(talk.id);">
+                <mat-icon>star</mat-icon>
+            </div>
+        </div>
+
+    </mat-card>
+</div>
