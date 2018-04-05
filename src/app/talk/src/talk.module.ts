@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { CoreModule } from '../../core';
 
 // Components
 import { TalksListComponent } from './components/list/talks-list.component';
@@ -41,6 +41,7 @@ const MATERIAL_MODULES = [
     imports: [
         CommonModule,
         RouterModule,
+        CoreModule,
         ...MATERIAL_MODULES
     ],
     declarations: COMPONENTS,

@@ -8,6 +8,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 // Material
 import {
@@ -15,14 +16,16 @@ import {
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
 } from '@angular/material';
 
 export const COMPONENTS = [
     LayoutComponent,
     NotFoundComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    SpinnerComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -30,7 +33,8 @@ const MATERIAL_MODULES = [
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
 ];
 
 @NgModule({

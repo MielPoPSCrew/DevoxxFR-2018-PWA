@@ -34,3 +34,7 @@
         <mat-paginator *ngIf="!mobileQuery.matches" [pageSizeOptions]="[25, 50, 75, 100]"></mat-paginator>
     </div>
 </div>
+
+<div *ngIf="!speakersData">
+    <app-spinner></app-spinner>
+</div>

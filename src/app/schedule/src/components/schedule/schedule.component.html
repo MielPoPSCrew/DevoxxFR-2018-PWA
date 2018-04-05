@@ -1,16 +1,26 @@
-<div class="schedule">
+<div class="schedule" *ngIf="schedule">
     <mat-tab-group >
-        <mat-tab label="Wednesday">
+        <mat-tab label="Wednesday" *ngIf="schedule">
             <app-schedule-periode *ngFor="let periode of schedule.wednesday" [periode]="periode"></app-schedule-periode>
+            <div *ngIf="!schedule.wednesday">
+                <app-spinner></app-spinner>
+            </div>
         </mat-tab>
         <mat-tab label="Thursday">
             <app-schedule-periode *ngFor="let periode of schedule.thursday" [periode]="periode"></app-schedule-periode>
+            <div *ngIf="!schedule.thursday">
+                <app-spinner></app-spinner>
+            </div>
         </mat-tab>
         <mat-tab label="Friday">
             <app-schedule-periode *ngFor="let periode of schedule.friday" [periode]="periode"></app-schedule-periode>
+            <div *ngIf="!schedule.friday">
+                <app-spinner></app-spinner>
+            </div>
         </mat-tab>
     </mat-tab-group>
 </div>
 
-<!-- TODO - Evol -->
-<!-- <app-info-modal></app-info-modal> -->
+<div *ngIf="!schedule">
+    <app-spinner></app-spinner>
+</div>
