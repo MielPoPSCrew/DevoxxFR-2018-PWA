@@ -17,9 +17,7 @@ export class EventsService {
   private events$: Observable<Event[]>;
 
   constructor(private http: HttpClient) {
-    this.getEvents().subscribe(data => console.log('event', data));
-    this.getEvent('key_b_amphi_friday_20_10h15_10h35').subscribe(data => console.log('event', data));
-    this.getTalk('key_b_amphi_friday_20_10h15_10h35').subscribe(data => console.log('event', data));
+    this.getEvents().subscribe();
   }
 
   public getEvent(slotId: string): Observable<Event> {
@@ -48,13 +46,13 @@ export class EventsService {
 
   public getEvents(): Observable<Event[]> {
     if (this.events.length > 0) {
-      console.log('cache');
+      console.log('[Event] Serving cache');
       return of(this.events);
     } else if (this.events$) {
-      console.log('merge');
+      console.log('[Event] Merge request');
       return this.events$;
     } else {
-      console.log('retrieved');
+      console.log('[Event] Fetching API');
 
       this.events$ =  forkJoin(
         this.requestEventsForDay(AppConstants.API_SCHEDULES_WEDNESDAY),
