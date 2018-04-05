@@ -11,6 +11,8 @@ export class SchedulePeriodeComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        // console.log('periode', this.periode);
+    }
 
 }

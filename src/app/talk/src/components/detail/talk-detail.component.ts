@@ -14,19 +14,17 @@ export class TalkDetailComponent implements OnInit {
     public talk = mockAPITalk;
 
     constructor(
-        activatedRoute: ActivatedRoute,
-        eventsService: EventsService) {
-            // activatedRoute.params.subscribe((params) => {
-            //     const id = params['talkId'];
-            //     console.log(id);
-            //     eventsService.getTalk(id).subscribe((data) => {
-            //         this.talk = data;
-            //         console.log(this.speaker);
-            //     });
-            // });
-     }
+        private activatedRoute: ActivatedRoute,
+        private eventsService: EventsService) { }
 
     ngOnInit() {
-        console.log(this.talk);
+        // this.activatedRoute.params.subscribe((params) => {
+        //     const id = params['talkId'];
+        //     console.log(id);
+        //     this.eventsService.getTalk(id).subscribe((data) => {
+        //         this.talk = data;
+        //         console.log(this.speaker);
+        //     });
+        // });
     }
 }
