@@ -1,4 +1,4 @@
-<div class="schedule-periode">
+<div class="schedule-periode" *ngIf="periode">
     <mat-card>
         <mat-card-subtitle>
             {{periode.time}}
@@ -8,4 +8,9 @@
     <div class="talks">
         <app-schedule-talk *ngFor="let event of periode.events" [talk]="event.talk"></app-schedule-talk>
     </div>
+
+    <div class="breaks">
+        <app-schedule-break *ngFor="let event of periode.events" [event]="event"></app-schedule-break>
+    </div>
+
 </div>

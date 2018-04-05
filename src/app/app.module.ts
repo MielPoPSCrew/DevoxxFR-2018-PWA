@@ -30,6 +30,7 @@ import { HomeComponent } from './core/src/components/home/home.component';
 // Custom Providers
 import { EventsService } from './services/events.service';
 import { SpeakersService } from './services/speakers.service';
+import { FavoriteTalksService } from './services/favorites.service';
 
 // TODO improve routing with xxx-routing modules
 const appRoutes: Routes = [
@@ -70,6 +71,7 @@ const appRoutes: Routes = [
         SwUpdate,
         EventsService,
         SpeakersService,
+        FavoriteTalksService,
     ],
     bootstrap: [AppComponent]
 })

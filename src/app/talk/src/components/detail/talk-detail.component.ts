@@ -12,19 +12,20 @@ export class TalkDetailComponent implements OnInit {
 
     env = environment;
     displayedColumns = ['name'];
+    talk: any;
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private eventsService: EventsService) { }
 
     ngOnInit() {
-        // this.activatedRoute.params.subscribe((params) => {
-        //     const id = params['talkId'];
-        //     console.log(id);
-        //     this.eventsService.getTalk(id).subscribe((data) => {
-        //         this.talk = data;
-        //         console.log(this.speaker);
-        //     });
-        // });
+        this.activatedRoute.params.subscribe((params) => {
+            const id = params['talkId'];
+            console.log(id);
+            this.eventsService.getTalk(id).subscribe((data) => {
+                this.talk = data.talk;
+                console.log(this.talk);
+            });
+        });
     }
 }
