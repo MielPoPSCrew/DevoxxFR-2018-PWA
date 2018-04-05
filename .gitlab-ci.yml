@@ -3,7 +3,6 @@ image: node:latest
 cache:
   paths:
     - node_modules/
-    - app/bower_components
 
 deploy_production:
   stage: deploy
@@ -15,6 +14,5 @@ deploy_production:
     - npm install -g @angular/cli
     - npm install
     - ng b --env=prod
-    - cd dist
     - firebase use --token $FIREBASE_DEPLOY_KEY production
-    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY
+    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY 
