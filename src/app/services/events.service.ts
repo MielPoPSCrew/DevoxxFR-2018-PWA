@@ -4,7 +4,7 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
 import { AppConstants } from '../app-constants';
 import { Event } from '../models/event';
-import { map, flatMap, toArray, switchMap, tap, filter, share, mergeMap} from 'rxjs/operators';
+import { map, flatMap, toArray, switchMap, tap, filter, share, mergeMap, single} from 'rxjs/operators';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 
 @Injectable()
@@ -18,6 +18,24 @@ export class EventsService {
 
   constructor(private http: HttpClient) {
     this.getEvents().subscribe(data => console.log('event', data));
+    this.getEvent('key_b_amphi_friday_20_10h15_10h35').subscribe(data => console.log('event', data));
+    this.getTalk('key_b_amphi_friday_20_10h15_10h35').subscribe(data => console.log('event', data));
+  }
+
+  public getEvent(slotId: string): Observable<Event> {
+    return this.getEvents()
+      .pipe(
+        mergeMap(event => event),
+        single(event => event.slotId === slotId)
+      );
+  }
+
+  public getTalk(slotId: string): Observable<Event> {
+    return this.getTalks()
+      .pipe(
+        mergeMap(event => event),
+        single(event => event.slotId === slotId)
+      );
   }
 
   public getTalks(): Observable<Event[]> {
@@ -66,10 +84,6 @@ export class EventsService {
       toArray(),
       share()
     );
-  }
-
-  private requestEvents(): Observable<Event[]> {
-    return null;
   }
 
   private eventFromSlot(slot: Slot): Observable<Event> {
