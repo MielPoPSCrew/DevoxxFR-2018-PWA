@@ -1,4 +1,4 @@
-<div class="speaker-detail">
+<div class="speaker-detail" *ngIf="speaker">
     <div class="speaker-avatar">
         <!-- <img src="/assets/default_black.png" [alt]="row.lastName"> -->
         <img [src]="speaker.avatarURL" [alt]="speaker.lastName"> 
@@ -21,7 +21,6 @@
     <mat-divider></mat-divider>
 
     <div class="speaker-links">
-        <!-- TODO redirections car là.. lol -->
         <img src="assets/twitter.png" [alt]="speaker.twitter">
         <mat-icon matListIcon>link</mat-icon>
     </div>

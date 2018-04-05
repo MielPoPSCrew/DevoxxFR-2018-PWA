@@ -28,7 +28,7 @@
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/talks/{{row.talk.id}}">
+            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/talks/{{row.slotId}}">
             </mat-row>
         </mat-table>
 
