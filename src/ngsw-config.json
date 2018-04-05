@@ -1,5 +1,8 @@
 {
   "index": "/index.html",
+  "appData": {
+    "version": "0.1.0"
+  },
   "assetGroups": [{
     "name": "app",
     "installMode": "prefetch",
@@ -16,7 +19,7 @@
     }
   }, {
     "name": "assets",
-    "installMode": "lazy",
+    "installMode": "prefetch",
     "updateMode": "prefetch",
     "resources": {
       "files": [
@@ -27,15 +30,13 @@
   "dataGroups": [{
     "name": "devoxx-api",
     "urls":[
-      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/rooms/",
-      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/speakers",
-      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/schedules/wednesday",
-      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/schedules/thursday",
-      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/schedules/friday"
+      "http://cfp.devoxx.fr/api/conferences/DevoxxFR2018/**",
+      "https://cfp.devoxx.fr/api/conferences/DevoxxFR2018/**"
     ],
+    "version": 2018,
     "cacheConfig": {
       "strategy":"performance",
-      "maxSize":10000,
+      "maxSize":100000,
       "maxAge":"1d"
     }
   }]

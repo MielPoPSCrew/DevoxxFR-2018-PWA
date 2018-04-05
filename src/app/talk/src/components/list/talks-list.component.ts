@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { environment } from '../../../../../environments/environment'
 import { EventsService } from '../../../../services/events.service';
 
 import { mockAPITalks } from '../../../../mocks/mockAPITalks';
@@ -16,6 +17,7 @@ export class TalksListComponent implements OnInit, OnDestroy {
     talksData = null;
     dataSource = new MatTableDataSource();
     mobileQuery: MediaQueryList;
+    env = environment;
 
     private _mobileQueryListener: () => void;
 
@@ -23,21 +25,21 @@ export class TalksListComponent implements OnInit, OnDestroy {
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(
-        changeDetectorRef: ChangeDetectorRef,
-        media: MediaMatcher,
-        eventsService: EventsService) {
+        private changeDetectorRef: ChangeDetectorRef,
+        private media: MediaMatcher,
+        private eventsService: EventsService) {
             this.mobileQuery = media.matchMedia('(max-width: 600px)');
             this._mobileQueryListener = () => changeDetectorRef.detectChanges();
             this.mobileQuery.addListener(this._mobileQueryListener);
-
-            eventsService.getTalks().subscribe((data) => {
-                this.talksData = data;
-                this.dataSource.data = this.talksData;
-                console.log(this.talksData);
-            });
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.eventsService.getTalks().subscribe((data) => {
+            this.talksData = data;
+            this.dataSource.data = this.talksData;
+            console.log(this.talksData);
+        });
+     }
 
     // tslint:disable-next-line:use-life-cycle-interface
     ngAfterViewInit() {

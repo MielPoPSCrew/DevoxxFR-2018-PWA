@@ -13,7 +13,7 @@ export class SpeakersService {
   private speakers$: Observable<Speaker[]>;
 
   constructor(private http: HttpClient) {
-    this.requestSpeakers().subscribe(data => console.log('speakers', data));
+    this.getSpeakers().subscribe();
   }
 
   public getSpeakers(): Observable<Speaker[]> {
@@ -30,13 +30,13 @@ export class SpeakersService {
 
   private requestSpeakers(): Observable<Speaker[]> {
     if (this.speakers.length > 0) {
-      console.log('cache');
+      console.log('[Speaker] Serving cache');
       return of(this.speakers);
     } else if (this.speakers$) {
-      console.log('merge');
+      console.log('[Speaker] Merge request');
       return this.speakers$;
     } else {
-      console.log('retrieved');
+      console.log('[Speaker] Fetching API');
       this.speakers$ = this.http.get<SpeakersApiResponse[]>(AppConstants.API_SPEAKERS)
       .pipe(
         flatMap(speaker => {
@@ -46,7 +46,12 @@ export class SpeakersService {
           return this.requestSpeaker(speaker.uuid);
         }),
         toArray(),
-        map(array => array.sort(this.sortSpeakers)),
+        map(array => {
+          const sortedEvents = array.sort(this.sortSpeakers);
+          this.speakers = sortedEvents;
+          this.speakers$ = null;
+          return sortedEvents;
+        }),
         share()
       );
 

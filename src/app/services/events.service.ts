@@ -4,7 +4,7 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
 import { AppConstants } from '../app-constants';
 import { Event } from '../models/event';
-import { map, flatMap, toArray, switchMap, tap, filter, share, mergeMap} from 'rxjs/operators';
+import { map, flatMap, toArray, switchMap, tap, filter, share, mergeMap, single} from 'rxjs/operators';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 
 @Injectable()
@@ -17,7 +17,23 @@ export class EventsService {
   private events$: Observable<Event[]>;
 
   constructor(private http: HttpClient) {
-    this.getEvents().subscribe(data => console.log('event', data));
+    this.getEvents().subscribe();
+  }
+
+  public getEvent(slotId: string): Observable<Event> {
+    return this.getEvents()
+      .pipe(
+        mergeMap(event => event),
+        single(event => event.slotId === slotId)
+      );
+  }
+
+  public getTalk(slotId: string): Observable<Event> {
+    return this.getTalks()
+      .pipe(
+        mergeMap(event => event),
+        single(event => event.slotId === slotId)
+      );
   }
 
   public getTalks(): Observable<Event[]> {
@@ -30,13 +46,13 @@ export class EventsService {
 
   public getEvents(): Observable<Event[]> {
     if (this.events.length > 0) {
-      console.log('cache');
+      console.log('[Event] Serving cache');
       return of(this.events);
     } else if (this.events$) {
-      console.log('merge');
+      console.log('[Event] Merge request');
       return this.events$;
     } else {
-      console.log('retrieved');
+      console.log('[Event] Fetching API');
 
       this.events$ =  forkJoin(
         this.requestEventsForDay(AppConstants.API_SCHEDULES_WEDNESDAY),
@@ -66,10 +82,6 @@ export class EventsService {
       toArray(),
       share()
     );
-  }
-
-  private requestEvents(): Observable<Event[]> {
-    return null;
   }
 
   private eventFromSlot(slot: Slot): Observable<Event> {
