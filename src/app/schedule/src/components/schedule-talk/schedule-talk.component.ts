@@ -11,9 +11,7 @@ export class ScheduleTalkComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() {
-        console.log(this.talk);
-    }
+    ngOnInit() { }
 
     bookmarkTalk(talkId: string) {
         console.log('bookmarkTalk', talkId);
