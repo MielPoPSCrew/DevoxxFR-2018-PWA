@@ -11,7 +11,8 @@
         "assets",
         "favicon.ico",
         "manifest.json",
-        "homescreen.png"
+        "homescreen.png",
+        "homescreen-512.png"
       ],
       "index": "index.html",
       "main": "main.ts",

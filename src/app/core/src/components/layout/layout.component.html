@@ -1,6 +1,6 @@
 <div class="layout" [class.isMobile]="mobileQuery.matches">
     <mat-toolbar>
-        <button mat-icon-button (click)="snav.toggle()" *ngIf="mobileQuery.matches">
+        <button aria-label="Open application menu" mat-icon-button (click)="snav.toggle()" *ngIf="mobileQuery.matches">
             <mat-icon>menu</mat-icon>
         </button>
 
