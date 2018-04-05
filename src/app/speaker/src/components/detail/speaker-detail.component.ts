@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SpeakersService } from '../../../../services/speakers.service';
+import { ActivatedRoute } from '@angular/router';
 
 import { mockAPISpeaker } from '../../../../mocks/mockAPISpeaker';
 
@@ -10,15 +12,21 @@ import { mockAPISpeaker } from '../../../../mocks/mockAPISpeaker';
 export class SpeakerDetailComponent implements OnInit {
 
     displayedColumns = ['type', 'title'];
-    public speaker = mockAPISpeaker;
+    public speaker: any;
 
-    constructor() { }
+    constructor(
+        activatedRoute: ActivatedRoute,
+        speakersService: SpeakersService) {
 
-    ngOnInit() {
-        console.log('mockAPISpeaker', mockAPISpeaker);
+            activatedRoute.params.subscribe((params) => {
+                const id = params['speakerId'];
+                console.log(id);
+                speakersService.getSpeaker(id).subscribe((data) => {
+                    this.speaker = data;
+                    console.log(this.speaker);
+                });
+            });
     }
 
-    goTo(url: String) {
-        console.log(url);
-    }
+    ngOnInit() { }
 }
