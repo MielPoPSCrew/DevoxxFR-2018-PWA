@@ -8,6 +8,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { SchedulePeriodeComponent } from './components/schedule-periode/schedule-periode.component';
 import { ScheduleTalkComponent } from './components/schedule-talk/schedule-talk.component';
 import { ScheduleBreakComponent } from './components/schedule-break/schedule-break.component';
+import { BookmarksComponent } from './components/bookmarks/bookmarks.component';
 
 // Material
 import {
@@ -23,7 +24,8 @@ export const COMPONENTS = [
     ScheduleComponent,
     SchedulePeriodeComponent,
     ScheduleTalkComponent,
-    ScheduleBreakComponent
+    ScheduleBreakComponent,
+    BookmarksComponent
 ];
 
 const MATERIAL_MODULES = [

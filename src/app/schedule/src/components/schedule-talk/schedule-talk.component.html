@@ -25,7 +25,8 @@
         <div class="footer">
             <div class="type">[{{talk.lang}}] {{talk.talkType}}</div>
             <div class="fav" (click)="bookmarkTalk(talk.id);">
-                <mat-icon>star</mat-icon>
+                <mat-icon *ngIf="favorited">star</mat-icon>
+                <mat-icon *ngIf="!favorited">star_bordered</mat-icon>
             </div>
         </div>
 

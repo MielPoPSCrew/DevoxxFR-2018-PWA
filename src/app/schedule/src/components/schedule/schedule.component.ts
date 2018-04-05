@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../../../services/events.service';
 
 import * as _ from 'lodash';
+import { Event } from '../../../../models/event';
 
 @Component({
     selector: 'app-schedule',
@@ -10,7 +11,7 @@ import * as _ from 'lodash';
 })
 export class ScheduleComponent implements OnInit {
 
-    public eventsData: any[];
+    public eventsData: Event[];
     public schedule: any;
 
     constructor(private eventsService: EventsService) {

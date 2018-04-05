@@ -28,6 +28,16 @@ export class EventsService {
       );
   }
 
+  public getEventsWithIds(talksId: string[]): Observable<Event[]> {
+    return this.getTalks()
+      .pipe(
+        mergeMap(event => event),
+        map(event => event),
+        filter(event => talksId.includes(event.talk.id)),
+        toArray()
+      );
+  }
+
   public getTalk(talkId: string): Observable<Event> {
     return this.getTalks()
       .pipe(

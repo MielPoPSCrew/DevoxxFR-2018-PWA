@@ -26,20 +26,22 @@ import { SpeakerDetailComponent } from './speaker/src/components/detail/speaker-
 import { TalksListComponent } from './talk/src/components/list/talks-list.component';
 import { TalkDetailComponent } from './talk/src/components/detail/talk-detail.component';
 import { HomeComponent } from './core/src/components/home/home.component';
+import { BookmarksComponent } from './schedule/src/components/bookmarks/bookmarks.component';
 
 // Custom Providers
 import { EventsService } from './services/events.service';
 import { SpeakersService } from './services/speakers.service';
+import { FavoriteTalksService } from './services/favorites.service';
 
 // TODO improve routing with xxx-routing modules
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', component: AboutComponent },
     { path: 'schedule', component: ScheduleComponent },
     { path: 'talks', component: TalksListComponent },
     { path: 'talks/:talkId', component: TalkDetailComponent },
     { path: 'speakers', component: SpeakersListComponent },
     { path: 'speakers/:speakerId', component: SpeakerDetailComponent },
-    { path: 'bookmarks', component: ScheduleComponent },
+    { path: 'bookmarks', component: BookmarksComponent },
     { path: 'about', component: AboutComponent },
     { path: '**', component: NotFoundComponent } // TODO page not found
 ];
@@ -70,6 +72,7 @@ const appRoutes: Routes = [
         SwUpdate,
         EventsService,
         SpeakersService,
+        FavoriteTalksService,
     ],
     bootstrap: [AppComponent]
 })
