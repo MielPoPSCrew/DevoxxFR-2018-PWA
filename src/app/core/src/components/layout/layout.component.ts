@@ -4,12 +4,12 @@ import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 // TODO remove to env config file
 const env = {
     menu: [
-        { title: 'Home', icon: 'home', link: '', withDivider: true },
-        { title: 'Full Schedule', icon: 'today', link: 'schedule', withDivider: false },
-        { title: 'Your schedule', icon: 'favorite', link: 'bookmarks', withDivider: true },
+        { title: 'Accueil', icon: 'home', link: '', withDivider: true },
+        { title: 'Planning', icon: 'today', link: 'schedule', withDivider: false },
+        { title: 'Bookmarks', icon: 'favorite', link: 'bookmarks', withDivider: true },
         { title: 'Speakers', icon: 'person', link: 'speakers', withDivider: false },
         { title: 'Talks', icon: 'school', link: 'talks', withDivider: true },
-        { title: 'About', icon: 'help', link: 'about', withDivider: false }
+        { title: 'À propos', icon: 'help', link: 'about', withDivider: false }
     ]
 };
 
