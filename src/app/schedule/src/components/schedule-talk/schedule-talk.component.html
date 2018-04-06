@@ -23,7 +23,7 @@
         </div> -->
 
         <div class="footer">
-            <div class="type"><img matTooltip="{{ talk.lang }}" src="{{ env.flags['tiny_'+talk.lang] }}"/><i class="material-icons md-18" matTooltip="{{ talk.talkType }}">{{ env.icons[talk.talkType] }}</i></div>
+            <div class="type"><img matTooltip="{{ talk.lang }}" src="{{ env.flags['tiny_'+talk.lang] }}"/> {{ talk.talkType }}</div>
             <div class="fav" (click)="bookmarkTalk(talk.id);">
                 <mat-icon *ngIf="favorited">star</mat-icon>
                 <mat-icon *ngIf="!favorited">star_bordered</mat-icon>
