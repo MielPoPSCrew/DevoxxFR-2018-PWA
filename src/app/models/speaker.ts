@@ -34,7 +34,7 @@ export class Speaker {
                     id: talk['id'],
                     track: talk['track'],
                     title: talk['title'],
-                    talkType: talk['title']
+                    talkType: talk['talkType']
                 });
             }
         );

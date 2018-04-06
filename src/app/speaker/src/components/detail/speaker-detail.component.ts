@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SpeakersService } from '../../../../services/speakers.service';
 import { ActivatedRoute } from '@angular/router';
+import { EventsService } from '../../../../services/events.service';
+import { environment } from '../../../../../environments/environment';
+import { Speaker } from '../../../../models/speaker';
 
 @Component({
     selector: 'app-speaker',
@@ -10,21 +13,29 @@ import { ActivatedRoute } from '@angular/router';
 export class SpeakerDetailComponent implements OnInit {
 
     displayedColumns = ['type', 'title'];
-    public speaker: any;
+    env = environment;
+
+    public speaker: Speaker;
 
     constructor(
-        activatedRoute: ActivatedRoute,
-        speakersService: SpeakersService) {
-
-            activatedRoute.params.subscribe((params) => {
-                const id = params['speakerId'];
-                console.log(id);
-                speakersService.getSpeaker(id).subscribe((data) => {
-                    this.speaker = data;
-                    console.log(this.speaker);
-                });
-            });
+        private activatedRoute: ActivatedRoute,
+        private speakersService: SpeakersService,
+        private eventsService: EventsService) {
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.activatedRoute.params.subscribe((params) => {
+            const speakerId = params['speakerId'];
+            console.log('speakerId', speakerId);
+
+            this.speakersService.getSpeaker(speakerId).subscribe((data) => {
+                this.speaker = data;
+                console.log(this.speaker);
+            });
+        });
+    }
+
+    errorHandler(event) {
+        event.target.src = '/assets/default_black.png';
+    }
 }

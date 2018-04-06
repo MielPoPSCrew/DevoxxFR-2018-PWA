@@ -21,31 +21,36 @@ export class SpeakersListComponent implements OnInit, OnDestroy {
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(
-        changeDetectorRef: ChangeDetectorRef,
-        media: MediaMatcher,
-        speakersService: SpeakersService) {
+        private changeDetectorRef: ChangeDetectorRef,
+        private media: MediaMatcher,
+        private speakersService: SpeakersService) {
+
             this.mobileQuery = media.matchMedia('(max-width: 600px)');
             this._mobileQueryListener = () => changeDetectorRef.detectChanges();
             this.mobileQuery.addListener(this._mobileQueryListener);
+    }
 
-            speakersService.getSpeakers().subscribe((data) => {
-                this.speakersData = data;
-                this.dataSource.data = this.speakersData;
-            });
+    ngOnInit() {
+        this.speakersService.getSpeakers().subscribe((data) => {
+            this.speakersData = data;
+            this.dataSource.data = this.speakersData;
+        });
      }
-
-    ngOnInit() { }
 
     // tslint:disable-next-line:use-life-cycle-interface
     ngAfterViewInit() {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
     }
 
     applyFilter(filterValue: string) {
-      filterValue = filterValue.trim();
-      filterValue = filterValue.toLowerCase();
-      this.dataSource.filter = filterValue;
+        filterValue = filterValue.trim();
+        filterValue = filterValue.toLowerCase();
+        this.dataSource.filter = filterValue;
+    }
+
+    errorHandler(event) {
+        event.target.src = '/assets/default_black.png';
     }
 
     ngOnDestroy(): void {

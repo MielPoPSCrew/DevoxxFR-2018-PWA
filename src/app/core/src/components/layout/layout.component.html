@@ -1,10 +1,10 @@
 <div class="layout" [class.isMobile]="mobileQuery.matches">
     <mat-toolbar>
-        <button mat-icon-button (click)="snav.toggle()" *ngIf="mobileQuery.matches">
+        <button aria-label="Open application menu" mat-icon-button (click)="snav.toggle()" *ngIf="mobileQuery.matches">
             <mat-icon>menu</mat-icon>
         </button>
 
-        <h1 class="title">Devoxx 2018</h1>
+        <h1 class="title">Devoxx France 2018</h1>
     </mat-toolbar>
 
     <mat-sidenav-container [style.marginTop.px]="mobileQuery.matches ? 56 : 0">

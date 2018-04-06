@@ -7,9 +7,17 @@ import { LogUpdateComponent } from './components/log-update.component';
 // Services
 import { LogUpdateService } from './services/log-update.service';
 
+// Material
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+const MATERIAL_MODULES = [
+    MatSnackBarModule
+];
+
 @NgModule({
     imports: [
         CommonModule,
+        ...MATERIAL_MODULES
     ],
     declarations: [
         LogUpdateComponent

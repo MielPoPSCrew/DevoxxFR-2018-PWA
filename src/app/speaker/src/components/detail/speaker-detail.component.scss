@@ -11,26 +11,48 @@
         img {
             border: 4px solid #F5AF33;
             border-radius: 50%;
+            height: 90px;
+            width: auto;
         }
+    }
+
+    .speaker-company {
+        font-size: 1em;
+        font-style: italic;
     }
 
     .speaker-name {
         font-size: 1.3em;
     }
 
+    .speaker-flag {
+        margin-top: 5px;
+
+        img {
+            height: 24px;
+            width: auto;
+        }
+    }
+
     .speaker-bio {
         margin: 0 30px;
+        text-align: justify;
     }
 
     .speaker-links {
-        img {
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-        }
+        a {
+            text-decoration: none;
 
-        .mat-icon {
-            cursor: pointer;
+            img {
+                cursor: pointer;
+                width: 24px;
+                height: 24px;
+            }
+    
+            .mat-icon {
+                cursor: pointer;
+                color: black;
+            }
         }
     }
 

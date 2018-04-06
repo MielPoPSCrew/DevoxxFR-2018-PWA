@@ -1,9 +1,10 @@
-<!-- <div class="talk-detail">
+<div class="talk-detail" *ngIf="talk">
     <div class="talk-title">
         {{talk.title}}
     </div>
 
     <mat-divider></mat-divider>
+
     <div class="talk-infos">
         <img matTooltip="{{ talk.lang }}" src="{{ env.flags[talk.lang] }}"/> <i class="material-icons" matTooltip="{{ talk.talkType }}">{{ env.icons[talk.talkType] }}</i>
     </div>
@@ -22,12 +23,16 @@
         <mat-table [dataSource]="talk.speakers" matSort>
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Speaker </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.identity}} </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/speakers/{{row.id}}">
             </mat-row>
         </mat-table>
     </div>
-</div> -->
+</div>
+
+<div *ngIf="!talk">
+    <app-spinner></app-spinner>
+</div>

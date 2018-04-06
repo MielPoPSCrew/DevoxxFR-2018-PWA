@@ -28,11 +28,21 @@ export class EventsService {
       );
   }
 
-  public getTalk(slotId: string): Observable<Event> {
+  public getEventsWithIds(talksId: string[]): Observable<Event[]> {
     return this.getTalks()
       .pipe(
         mergeMap(event => event),
-        single(event => event.slotId === slotId)
+        map(event => event),
+        filter(event => talksId.includes(event.talk.id)),
+        toArray()
+      );
+  }
+
+  public getTalk(talkId: string): Observable<Event> {
+    return this.getTalks()
+      .pipe(
+        mergeMap(event => event),
+        single(event => event.talk.id === talkId)
       );
   }
 
@@ -47,6 +57,7 @@ export class EventsService {
   public getEvents(): Observable<Event[]> {
     if (this.events.length > 0) {
       console.log('[Event] Serving cache');
+      const cloned: Event[] = Object.create(this.events);
       return of(this.events);
     } else if (this.events$) {
       console.log('[Event] Merge request');

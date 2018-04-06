@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CoreModule } from '../../core/';
 
 // Components
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { SchedulePeriodeComponent } from './components/schedule-periode/schedule-periode.component';
 import { ScheduleTalkComponent } from './components/schedule-talk/schedule-talk.component';
-import { InfoModalComponent } from './components/info-modal/info-modal.component';
+import { ScheduleBreakComponent } from './components/schedule-break/schedule-break.component';
+import { BookmarksComponent } from './components/bookmarks/bookmarks.component';
 
 // Material
 import {
@@ -15,14 +17,16 @@ import {
     MatCardModule,
     MatChipsModule,
     MatSidenavModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTooltipModule
 } from '@angular/material';
 
 export const COMPONENTS = [
     ScheduleComponent,
     SchedulePeriodeComponent,
     ScheduleTalkComponent,
-    InfoModalComponent
+    ScheduleBreakComponent,
+    BookmarksComponent
 ];
 
 const MATERIAL_MODULES = [
@@ -31,13 +35,15 @@ const MATERIAL_MODULES = [
     MatCardModule,
     MatChipsModule,
     MatSidenavModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTooltipModule
 ];
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
+        CoreModule,
         ...MATERIAL_MODULES
     ],
     declarations: COMPONENTS,

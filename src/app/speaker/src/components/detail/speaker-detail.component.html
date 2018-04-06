@@ -1,15 +1,19 @@
-<div class="speaker-detail">
+<div class="speaker-detail" *ngIf="speaker">
     <div class="speaker-avatar">
-        <!-- <img src="/assets/default_black.png" [alt]="row.lastName"> -->
-        <img [src]="speaker.avatarURL" [alt]="speaker.lastName"> 
-    </div>
-
-    <div class="speaker-flag">
-        [fr]
+        <img *ngIf="speaker.avatarURL === null" src="/assets/default_black.png" [alt]="speaker.lastName">
+        <img *ngIf="speaker.avatarURL !== null" [src]="speaker.avatarURL" [alt]="speaker.lastName" (error)="errorHandler($event)">
     </div>
 
     <div class="speaker-name">
         {{speaker.firstName}} {{speaker.lastName}}
+    </div>
+
+    <div class="speaker-company">
+        {{speaker.company}}
+    </div>
+
+    <div class="speaker-flag">
+        <img matTooltip="{{ speaker.lang }}" src="{{ env.flags[speaker.lang] }}" />
     </div>
 
     <mat-divider></mat-divider>
@@ -21,16 +25,23 @@
     <mat-divider></mat-divider>
 
     <div class="speaker-links">
-        <!-- TODO redirections car là.. lol -->
-        <img src="assets/twitter.png" [alt]="speaker.twitter">
-        <mat-icon matListIcon>link</mat-icon>
+        <a href="https://twitter.com/{{ speaker.twitter }}" target="_blank" *ngIf="speaker.twitter">
+            <img src="assets/twitter.png" [alt]="speaker.twitter">
+        </a>
+        <a href="{{ speaker.blog }}" target="_blank" *ngIf="speaker.blog">
+            <mat-icon matListIcon>link</mat-icon>
+        </a>
+
     </div>
 
     <div class="speaker-talks">
         <mat-table [dataSource]="speaker.acceptedTalks" matSort>
             <ng-container matColumnDef="type">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
-                <mat-cell *matCellDef="let row"> [icon] </mat-cell>
+                <mat-cell *matCellDef="let row">
+                    <i class="material-icons" matTooltip="{{ row.talkType }}">{{ env.icons[row.talkType] }}</i> 
+                </mat-cell>
+
             </ng-container>
 
             <ng-container matColumnDef="title">
@@ -43,4 +54,8 @@
             </mat-row>
         </mat-table>
     </div>
+</div>
+
+<div *ngIf="!speaker">
+    <app-spinner></app-spinner>
 </div>

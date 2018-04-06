@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../../../services/events.service';
-
-import * as _ from 'lodash';
+import { FavoriteTalksService } from '../../../../services/favorites.service';
 import { Event } from '../../../../models/event';
+import * as _ from 'lodash';
 
 @Component({
-    selector: 'app-schedule',
-    templateUrl: './schedule.component.html',
-    styleUrls: ['./schedule.component.scss']
+    selector: 'app-bookmarks',
+    templateUrl: './bookmarks.component.html',
+    styleUrls: ['./bookmarks.component.scss']
 })
-export class ScheduleComponent implements OnInit {
+export class BookmarksComponent implements OnInit {
 
     public eventsData: Event[];
-    public schedule: any;
+    public bookmark: any;
+    public isBookmarkResolved: boolean;
 
-    constructor(private eventsService: EventsService) {
-        this.schedule = {};
+    constructor(private eventsService: EventsService, private favorite: FavoriteTalksService) {
+        this.bookmark = {};
+        this.isBookmarkResolved = false;
     }
 
     sortEvents(eventsData): object {
@@ -43,10 +45,11 @@ export class ScheduleComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.eventsService.getEvents().subscribe((data) => {
+        const bookmarks = this.favorite.getFavorites();
+        this.eventsService.getEventsWithIds(bookmarks).subscribe((data) => {
             this.eventsData = data;
-            this.schedule = this.sortEvents(this.eventsData);
-            console.log('schedule', this.schedule);
+            this.bookmark = this.sortEvents(this.eventsData);
+            this.isBookmarkResolved = true;
         });
 
     }

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { InfoModalComponent } from '../info-modal/info-modal.component';
+import { FavoriteTalksService } from '../../../../services/favorites.service';
+import { Talk } from '../../../../models/talk';
+import { environment } from '../../../../../environments/environment'
+
 @Component({
     selector: 'app-schedule-talk',
     templateUrl: './schedule-talk.component.html',
@@ -7,15 +10,23 @@ import { InfoModalComponent } from '../info-modal/info-modal.component';
 })
 export class ScheduleTalkComponent implements OnInit {
 
-    @Input('talk') talk: any;
+    @Input('talk') talk: Talk;
+    favorited: boolean;
+    env = environment;
 
-    constructor() { }
+    constructor(private favorites: FavoriteTalksService) { }
 
     ngOnInit() {
-        console.log(this.talk);
+        this.favorited = this.favorites.isFavorite(this.talk.id);
     }
 
     bookmarkTalk(talkId: string) {
-        console.log('bookmarkTalk', talkId);
+        if (this.favorites.isFavorite(talkId)) {
+            this.favorites.removeFavorite(talkId);
+            this.favorited = false;
+        } else {
+            this.favorites.addFavorite(talkId);
+            this.favorited = true;
+        }
     }
 }
