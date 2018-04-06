@@ -17,7 +17,8 @@ import {
     MatCardModule,
     MatChipsModule,
     MatSidenavModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTooltipModule
 } from '@angular/material';
 
 export const COMPONENTS = [
@@ -34,7 +35,8 @@ const MATERIAL_MODULES = [
     MatCardModule,
     MatChipsModule,
     MatSidenavModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTooltipModule
 ];
 
 @NgModule({
