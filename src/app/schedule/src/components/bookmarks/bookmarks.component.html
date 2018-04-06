@@ -1,13 +1,35 @@
-<div class="schedule">
-    <mat-tab-group >
-        <mat-tab label="Wednesday">
-            <app-schedule-periode *ngFor="let periode of schedule.wednesday" [periode]="periode"></app-schedule-periode>
+<div class="bookmark" *ngIf="bookmark">
+    <mat-tab-group>
+        <mat-tab label="Mercredi">
+            <app-schedule-periode *ngFor="let periode of bookmark.wednesday" [periode]="periode"></app-schedule-periode>
+            <div *ngIf="!isBookmarkResolved">
+                <app-spinner></app-spinner>
+            </div>
+            <div class="no-bookmarks" *ngIf="!bookmark.wednesday && isBookmarkResolved">
+                Vous n'avez pas de bookmark pour ce jour.
+            </div>
         </mat-tab>
-        <mat-tab label="Thursday">
-            <app-schedule-periode *ngFor="let periode of schedule.thursday" [periode]="periode"></app-schedule-periode>
+        <mat-tab label="Jeudi">
+            <app-schedule-periode *ngFor="let periode of bookmark.thursday" [periode]="periode"></app-schedule-periode>
+            <div *ngIf="!isBookmarkResolved">
+                <app-spinner></app-spinner>
+            </div>
+            <div class="no-bookmarks" *ngIf="!bookmark.friday && isBookmarkResolved">
+                Vous n'avez pas de bookmark pour ce jour.
+            </div>
         </mat-tab>
-        <mat-tab label="Friday">
-            <app-schedule-periode *ngFor="let periode of schedule.friday" [periode]="periode"></app-schedule-periode>
+        <mat-tab label="Vendredi">
+            <app-schedule-periode *ngFor="let periode of bookmark.friday" [periode]="periode"></app-schedule-periode>
+            <div *ngIf="!isBookmarkResolved">
+                <app-spinner></app-spinner>
+            </div>
+            <div class="no-bookmarks" *ngIf="!bookmark.friday && isBookmarkResolved">
+                Vous n'avez pas de bookmark pour ce jour.
+            </div>
         </mat-tab>
     </mat-tab-group>
+</div>
+
+<div *ngIf="!bookmark">
+    <app-spinner></app-spinner>
 </div>
