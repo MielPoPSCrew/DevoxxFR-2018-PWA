@@ -3,7 +3,7 @@
   "short_name": "Devoxx 18 Fr",
   "description": "Informations about the french Devoxx 2018 edition, in a Progressive Web App ;)",
   "lang": "fr",
-  "start_url": "/",
+  "start_url": "index.html",
   "display": "standalone",
   "orientation": "any",
   "theme_color": "#000000",
