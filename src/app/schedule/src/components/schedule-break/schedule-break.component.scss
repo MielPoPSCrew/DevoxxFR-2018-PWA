@@ -2,10 +2,18 @@
     margin-bottom: 10px;
 
     .mat-card {
+        text-align: center;
+
         .mat-card-subtitle {
             text-align: center;
             font-size: 1.0em;
             color: black;
+            display: inline-flex;
+            vertical-align: middle;
+        }
+
+        .mat-icon {
+            margin-right: 12px;
         }
     }
 }
