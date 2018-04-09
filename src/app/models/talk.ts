@@ -8,6 +8,7 @@ export class Talk {
     title: string;
     lang: string;
     summary: string;
+    summaryAsHtml: string;
     speakers: SpeakerSummary[];
 
     private constructor() {}
@@ -21,6 +22,7 @@ export class Talk {
         talk.title = json['title'];
         talk.lang = json['lang'];
         talk.summary = json['summary'];
+        talk.summaryAsHtml = json['summaryAsHtml'];
         talk.speakers = [];
 
         json['speakers'].map(item => {

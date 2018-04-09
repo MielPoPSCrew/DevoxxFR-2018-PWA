@@ -17,10 +17,6 @@
 
     <mat-divider></mat-divider>
 
-    <div class="talk-infos">
-        <img matTooltip="{{ event.talk.lang }}" src="{{ env.flags[event.talk.lang] }}" />
-    </div>
-
     <div class="talk-type">
         <i class="material-icons" matTooltip="{{ event.talk.talkType }}">{{ env.icons[event.talk.talkType] }}</i>
         <span>{{event.talk.talkType}}</span>
@@ -30,9 +26,11 @@
         {{event.talk.track}}
     </div>
 
-    <div class="talk-summary">
-        {{event.talk.summary}}
+    <div class="talk-infos">
+        <img matTooltip="{{ event.talk.lang }}" src="{{ env.flags[event.talk.lang] }}" />
     </div>
+
+    <div class="talk-summary" [innerHtml]="event.talk.summaryAsHtml"></div>
 
     <mat-divider></mat-divider>
 

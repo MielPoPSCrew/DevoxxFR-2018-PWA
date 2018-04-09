@@ -51,12 +51,6 @@ $mobile-size: 600px;
         }
     }
 
-    .talk-infos {
-        img {
-            max-height: 20px;
-        }
-    }
-
     .talk-type {
         font-size: 0.9em;
         opacity: 0.6;
@@ -66,9 +60,17 @@ $mobile-size: 600px;
         }
     }
 
+    .talk-infos {
+        margin-top: 10px;
+
+        img {
+            max-height: 20px;
+        }
+    }
+
     .talk-summary {
         text-align: justify;
-        margin: 30px 30px;
+        margin: 0 30px;
     }
 
     .talk-speakers {
