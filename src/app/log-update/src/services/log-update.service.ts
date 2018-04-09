@@ -15,8 +15,7 @@ export class LogUpdateService {
       this.updateAvailable.next(true);
     });
 
-    // Check update every 10 seconds (for demo)
-    interval(10 * 1000).subscribe(() => {
+    interval(120 * 1000).subscribe(() => {
       updates.checkForUpdate();
     });
 
