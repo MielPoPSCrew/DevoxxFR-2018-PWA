@@ -18,7 +18,7 @@ import { SpeakersService } from '../../../../services/speakers.service';
 export class TalkDetailComponent implements OnInit {
 
     env = environment;
-    displayedColumns = ['avatar', 'name'];
+    displayedColumns = ['avatar', 'firstName', 'lastName'];
     event: Event;
     public speakers: Speaker[];
     public speakersData = new MatTableDataSource();
@@ -41,9 +41,9 @@ export class TalkDetailComponent implements OnInit {
                 this.favorited = this.favorites.isFavorite(this.event.talk.id);
 
                 this.event.talk.speakers.map((speaker) => {
-                    this.speakersService.getSpeaker(speaker.id).subscribe((speaker_) => {
-                        console.log(speaker_);
-                        this.speakers.push(speaker_);
+                    this.speakersService.getSpeaker(speaker.id).subscribe((fullSpeaker) => {
+                        console.log(fullSpeaker);
+                        this.speakers.push(fullSpeaker);
                         this.speakersData.data = this.speakers;
                     });
                 });
