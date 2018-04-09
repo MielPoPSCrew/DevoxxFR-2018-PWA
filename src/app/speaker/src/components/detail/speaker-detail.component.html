@@ -18,9 +18,7 @@
 
     <mat-divider></mat-divider>
 
-    <div class="speaker-bio">
-        {{speaker.bio}}
-    </div>
+    <div class="speaker-bio" [innerHtml]="speaker.bioAsHtml"></div>
 
     <mat-divider></mat-divider>
 

@@ -12,19 +12,15 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
                 <mat-cell *matCellDef="let row">
                     <i class="material-icons" matTooltip="{{ row.talk.talkType }}">{{ env.icons[row.talk.talkType] }}</i>
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="lang">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Langue </mat-header-cell>
-                <mat-cell *matCellDef="let row">
-                    <img matTooltip="{{ row.talk.lang }}" src="{{ env.flags[row.talk.lang] }}"/>
+                    <span> {{row.talk.talkType}}</span>
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="title">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.talk.title}} </mat-cell>
+                <mat-cell *matCellDef="let row">
+                    <img matTooltip="{{ row.talk.lang }}" src="{{ env.flags[row.talk.lang] }}"/> {{row.talk.title}}
+                </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
