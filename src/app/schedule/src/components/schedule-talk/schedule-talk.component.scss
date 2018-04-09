@@ -17,6 +17,7 @@ $mobile-size: 600px;
         .mat-card-subtitle {
             margin-bottom: 10px;
             height: 64px;
+            overflow: hidden;
 
             @media screen and (max-width: $mobile-size) {
                 height: 48px;
@@ -51,19 +52,6 @@ $mobile-size: 600px;
                 }
             }
         }
-
-        // .tags {
-        //     margin-top: 15px;
-
-        //     .mat-chip-list{
-        //         .mat-chip {
-        //             padding: 2px 5px;
-        //             background: #F5AF33;
-        //             border-radius: 2px;
-        //             margin: 0 4px 2px 0;
-        //         }
-        //     }
-        // }
         
         .footer {
             .type {
