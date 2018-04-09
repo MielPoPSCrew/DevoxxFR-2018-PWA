@@ -37,12 +37,10 @@ export class TalkDetailComponent implements OnInit {
             const id = params['talkId'];
             this.eventsService.getTalk(id).subscribe((data) => {
                 this.event = data;
-                console.log(this.event);
                 this.favorited = this.favorites.isFavorite(this.event.talk.id);
 
                 this.event.talk.speakers.map((speaker) => {
                     this.speakersService.getSpeaker(speaker.id).subscribe((speaker_) => {
-                        console.log(speaker_);
                         this.speakers.push(speaker_);
                         this.speakersData.data = this.speakers;
                     });

@@ -31,13 +31,10 @@ export class SpeakersService {
 
   private requestSpeakers(): Observable<Speaker[]> {
     if (this.speakers.length > 0) {
-      console.log('[Speaker] Serving cache');
       return of(this.speakers);
     } else if (this.speakers$) {
-      console.log('[Speaker] Merge request');
       return this.speakers$;
     } else {
-      console.log('[Speaker] Fetching API');
       this.speakers$ = this.http.get<SpeakersApiResponse[]>(AppConstants.API_SPEAKERS)
       .pipe(
         flatMap(speaker => {

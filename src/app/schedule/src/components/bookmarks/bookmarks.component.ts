@@ -46,7 +46,7 @@ export class BookmarksComponent implements OnInit {
 
     ngOnInit() {
         const bookmarks = this.favorite.getFavorites();
-        this.eventsService.getEventsWithIds(bookmarks).subscribe((data) => {
+        this.eventsService.getTalksWithIds(bookmarks).subscribe((data) => {
             this.eventsData = data;
             this.bookmark = this.sortEvents(this.eventsData);
             this.isBookmarkResolved = true;

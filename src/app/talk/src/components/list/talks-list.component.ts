@@ -46,7 +46,6 @@ export class TalksListComponent implements OnInit, OnDestroy {
         this.eventsService.getTalks().subscribe((data) => {
             this.talksData = data;
             this.dataSource.data = this.talksData;
-            console.log(this.talksData);
         });
      }
 

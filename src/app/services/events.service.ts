@@ -4,16 +4,13 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
 import { AppConstants } from '../app-constants';
 import { Event } from '../models/event';
-import { map, flatMap, toArray, switchMap, tap, filter, share, mergeMap, single} from 'rxjs/operators';
+import { map, flatMap, toArray, tap, filter, share, mergeMap, single} from 'rxjs/operators';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 
 @Injectable()
 export class EventsService {
 
   private events: Event[] = [];
-  private wednesdayEvents: Event[] = [];
-  private thursdayEvents: Event[] = [];
-  private fridayEvents: Event[] = [];
   private events$: Observable<Event[]>;
 
   constructor(private http: HttpClient) {
@@ -28,7 +25,7 @@ export class EventsService {
       );
   }
 
-  public getEventsWithIds(talksId: string[]): Observable<Event[]> {
+  public getTalksWithIds(talksId: string[]): Observable<Event[]> {
     return this.getTalks()
       .pipe(
         mergeMap(event => event),
@@ -56,14 +53,11 @@ export class EventsService {
 
   public getEvents(): Observable<Event[]> {
     if (this.events.length > 0) {
-      console.log('[Event] Serving cache');
       const cloned: Event[] = Object.create(this.events);
       return of(this.events);
     } else if (this.events$) {
-      console.log('[Event] Merge request');
       return this.events$;
     } else {
-      console.log('[Event] Fetching API');
 
       this.events$ =  forkJoin(
         this.requestEventsForDay(AppConstants.API_SCHEDULES_WEDNESDAY),

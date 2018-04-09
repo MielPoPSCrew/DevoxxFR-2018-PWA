@@ -35,20 +35,16 @@ export class SpeakerDetailComponent implements OnInit {
     ngOnInit() {
         this.activatedRoute.params.subscribe((params) => {
             const speakerId = params['speakerId'];
-            console.log('speakerId', speakerId);
 
             this.speakersService.getSpeaker(speakerId).subscribe((data) => {
                 this.speaker = data;
 
                 this.speaker.acceptedTalks.map((talk) => {
                     this.eventsService.getTalk(talk.id).subscribe((fullEvent) => {
-                        console.log(fullEvent.talk);
                         this.talks.push(fullEvent.talk);
                         this.talksData.data = this.talks;
                     });
                 });
-
-                console.log(this.speaker);
             });
         });
     }
