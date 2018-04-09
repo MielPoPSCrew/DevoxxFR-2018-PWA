@@ -35,6 +35,12 @@
                         max-width: 140px;
                     }
                 }
+
+                .mat-colum-title {
+                    @media screen and (min-width: $mobile-size) {
+                        padding-left: 20px;
+                    }
+                }
             }
 
             .mat-row {
@@ -83,7 +89,6 @@
                         }
                     }
                 }
-
             }
         }
 

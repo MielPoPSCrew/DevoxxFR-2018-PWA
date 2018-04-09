@@ -1,3 +1,5 @@
+$mobile-size: 600px;
+
 .speakers-list {
     .header {
         display: flex;
@@ -29,6 +31,13 @@
                 .mat-column-avatar {
                     max-width: 100px;
                 }
+
+                @media screen and (min-width: $mobile-size) {
+                    .mat-column-firstName,
+                    .mat-column-lastName {
+                        max-width: 250px;
+                    }
+                }
             }
 
             .mat-row {
@@ -50,6 +59,14 @@
                         margin-right: 10px;
                         border-radius: 50%;
                     }
+
+                    @media screen and (min-width: $mobile-size) {
+                        &.mat-column-firstName,
+                        &.mat-column-lastName {
+                            max-width: 250px;
+                            font-size: 1em;
+                        }
+                    }
                 } 
             }
         }
@@ -61,5 +78,4 @@
             background: #F5AF33;
         }
     }
-
 }
