@@ -14,7 +14,7 @@ export const environment = {
   flags: {
     fr: '/assets/flag_fr.png',
     en: '/assets/flag_en.png',
-    tiny_fr: '/assets/tinyflag_fr.png',
+    tiny_fr: '/assets/tiny_flag_fr.png',
     tiny_en: '/assets/tiny_flag_en.png'
   },
   menu: [
