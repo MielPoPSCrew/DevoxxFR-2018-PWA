@@ -53,6 +53,10 @@
             <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/talks/{{row.id}}">
             </mat-row>
         </mat-table>
+
+        <div *ngIf="talks.length === 0">
+            <app-spinner></app-spinner>
+        </div>
     </div>
 </div>
 
