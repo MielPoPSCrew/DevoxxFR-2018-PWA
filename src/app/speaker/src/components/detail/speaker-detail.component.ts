@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { SpeakersService } from '../../../../services/speakers.service';
 import { ActivatedRoute } from '@angular/router';
-import { EventsService } from '../../../../services/events.service';
 import { environment } from '../../../../../environments/environment';
 import { Speaker } from '../../../../models/speaker';
+
+// Services
+import { EventsService } from '../../../../services/events.service';
+import { SpeakersService } from '../../../../services/speakers.service';
+
 
 @Component({
     selector: 'app-speaker',

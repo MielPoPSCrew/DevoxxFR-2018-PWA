@@ -3,6 +3,11 @@
         {{event.talk.title}}
     </div>
 
+    <div class="talk-fav" (click)="bookmarkTalk(event.talk.id);">
+        <mat-icon *ngIf="favorited">star</mat-icon>
+        <mat-icon *ngIf="!favorited">star_bordered</mat-icon>
+    </div>
+
     <div class="talk-maininfos">
         <div class="time">
             <i class="material-icons">access_time</i>
@@ -35,16 +40,28 @@
     <mat-divider></mat-divider>
 
     <div class="talk-speakers">
-        <mat-table [dataSource]="event.talk.speakers" matSort>
+        <mat-table [dataSource]="speakersData" matSort>
+            <ng-container matColumnDef="avatar">
+                <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+                <mat-cell *matCellDef="let row" class="img-cell">
+                    <img *ngIf="row.avatarURL === null" src="/assets/default_black.png" [alt]="row.lastName">
+                    <img *ngIf="row.avatarURL !== null" [src]="row.avatarURL" [alt]="row.lastName" (error)="errorHandler($event)">
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Speaker </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.identity}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.firstName}} {{row.lastName}} </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/speakers/{{row.id}}">
+            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/speakers/{{row.uuid}}">
             </mat-row>
         </mat-table>
+
+        <div *ngIf="speakers.length === 0">
+            <app-spinner></app-spinner>
+        </div>
     </div>
 </div>
 

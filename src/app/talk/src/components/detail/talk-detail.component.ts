@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
-import { EventsService } from '../../../../services/events.service';
 import { ActivatedRoute } from '@angular/router';
 import { Event } from '../../../../models/event';
+import { Speaker } from '../../../../models/speaker';
+import { MatTableDataSource } from '@angular/material';
+
+// Services
+import { FavoriteTalksService } from '../../../../services/favorites.service';
+import { EventsService } from '../../../../services/events.service';
+import { SpeakersService } from '../../../../services/speakers.service';
 
 @Component({
     selector: 'app-talk-detail',
@@ -12,21 +18,50 @@ import { Event } from '../../../../models/event';
 export class TalkDetailComponent implements OnInit {
 
     env = environment;
-    displayedColumns = ['name'];
+    displayedColumns = ['avatar', 'name'];
     event: Event;
+    public speakers: Speaker[];
+    public speakersData = new MatTableDataSource();
+    public favorited: boolean;
 
     constructor(
         private activatedRoute: ActivatedRoute,
-        private eventsService: EventsService) { }
+        private eventsService: EventsService,
+        private speakersService: SpeakersService,
+        private favorites: FavoriteTalksService) {
+            this.speakers = [];
+        }
 
     ngOnInit() {
         this.activatedRoute.params.subscribe((params) => {
             const id = params['talkId'];
-            console.log(id);
             this.eventsService.getTalk(id).subscribe((data) => {
                 this.event = data;
                 console.log(this.event);
+                this.favorited = this.favorites.isFavorite(this.event.talk.id);
+
+                this.event.talk.speakers.map((speaker) => {
+                    this.speakersService.getSpeaker(speaker.id).subscribe((speaker_) => {
+                        console.log(speaker_);
+                        this.speakers.push(speaker_);
+                        this.speakersData.data = this.speakers;
+                    });
+                });
             });
         });
+    }
+
+    errorHandler(event) {
+        event.target.src = '/assets/default_black.png';
+    }
+
+    bookmarkTalk(talkId: string) {
+        if (this.favorites.isFavorite(talkId)) {
+            this.favorites.removeFavorite(talkId);
+            this.favorited = false;
+        } else {
+            this.favorites.addFavorite(talkId);
+            this.favorited = true;
+        }
     }
 }

@@ -11,6 +11,10 @@ $mobile-size: 600px;
         margin: 10px 30px;
     }
 
+    .talk-fav {
+        cursor: pointer;
+    } 
+
     .talk-maininfos {
         margin-top: 5px;
         padding: 0 30px;
@@ -84,6 +88,18 @@ $mobile-size: 600px;
 
                 .mat-cell {
                     text-align: left;
+
+                    &.mat-column-avatar {
+                        padding-top: 3px;
+                        max-width: 100px;
+                    }
+
+                    img {
+                        height: 24px;
+                        width: 24px;
+                        margin-right: 10px;
+                        border-radius: 50%;
+                    }
                 }
             }
         }
