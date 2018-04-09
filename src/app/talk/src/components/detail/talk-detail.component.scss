@@ -79,16 +79,29 @@ $mobile-size: 600px;
 
     .talk-speakers {
         .mat-table {
+            text-align: left;
+
+            .mat-header-row {
+                .mat-column-avatar {
+                    max-width: 100px;
+                }
+
+                @media screen and (min-width: $mobile-size) {
+                    .mat-column-firstName,
+                    .mat-column-lastName {
+                        max-width: 250px;
+                    }
+                }
+            }
+
             .mat-row {
                 cursor: pointer;
-    
+
                 &:hover {
                     background: rgba(0, 0, 0, .04);
                 }
 
                 .mat-cell {
-                    text-align: left;
-
                     &.mat-column-avatar {
                         padding-top: 3px;
                         max-width: 100px;
@@ -100,7 +113,15 @@ $mobile-size: 600px;
                         margin-right: 10px;
                         border-radius: 50%;
                     }
-                }
+
+                    @media screen and (min-width: $mobile-size) {
+                        &.mat-column-firstName,
+                        &.mat-column-lastName {
+                            max-width: 250px;
+                            font-size: 1em;
+                        }
+                    }
+                } 
             }
         }
     }

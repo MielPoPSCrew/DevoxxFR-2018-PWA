@@ -44,14 +44,19 @@
             <ng-container matColumnDef="avatar">
                 <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
                 <mat-cell *matCellDef="let row" class="img-cell">
-                    <img *ngIf="row.avatarURL === null" src="/assets/default_black.png" [alt]="row.lastName">
-                    <img *ngIf="row.avatarURL !== null" [src]="row.avatarURL" [alt]="row.lastName" (error)="errorHandler($event)">
+                    <img *ngIf="row.avatarURL === null" src="/assets/default_black.png" [alt]="row.lastName" >
+                    <img *ngIf="row.avatarURL !== null" [src]="row.avatarURL" [alt]="row.lastName" (error)="errorHandler($event)"> 
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Speaker </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.firstName}} {{row.lastName}} </mat-cell>
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.firstName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.lastName}} </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
