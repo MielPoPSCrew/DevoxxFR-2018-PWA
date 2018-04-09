@@ -1,3 +1,5 @@
+$mobile-size: 600px;
+
 .talk-detail {
     display: flex;
     flex-direction: column;
@@ -9,9 +11,64 @@
         margin: 10px 30px;
     }
 
+    .talk-maininfos {
+        margin-top: 5px;
+        padding: 0 30px;
+        display: inline-flex;
+
+        .time, .room {
+            border-radius: 2px;
+            background: #F5AF33;
+            color: white;
+            flex: 1;
+            padding: 3px 0;
+            text-align: center;
+
+            i {
+                display: inline-flex;
+                vertical-align: middle;
+                padding-bottom: 3px;
+                font-size: 1em;
+            }
+        }
+
+        .time {
+            margin-right: 5px;
+        }
+
+        .room {
+            margin-left: 5px;
+        }
+
+        @media screen and (min-width: $mobile-size) {
+            flex-direction: column;
+            align-items: center;
+
+            .time, .room {
+                width: 200px;
+                margin: 5px 0 0 0;
+            }
+        }
+    }
+
+    .talk-infos {
+        img {
+            max-height: 20px;
+        }
+    }
+
+    .talk-type {
+        font-size: 0.9em;
+        opacity: 0.6;
+
+        i {
+            font-size: 14px;
+        }
+    }
+
     .talk-summary {
         text-align: justify;
-        margin: 10px 30px;
+        margin: 30px 30px;
     }
 
     .talk-speakers {

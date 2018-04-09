@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 import { EventsService } from '../../../../services/events.service';
 import { ActivatedRoute } from '@angular/router';
+import { Event } from '../../../../models/event';
 
 @Component({
     selector: 'app-talk-detail',
@@ -12,7 +13,7 @@ export class TalkDetailComponent implements OnInit {
 
     env = environment;
     displayedColumns = ['name'];
-    talk: any;
+    event: Event;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -23,8 +24,8 @@ export class TalkDetailComponent implements OnInit {
             const id = params['talkId'];
             console.log(id);
             this.eventsService.getTalk(id).subscribe((data) => {
-                this.talk = data.talk;
-                console.log(this.talk);
+                this.event = data;
+                console.log(this.event);
             });
         });
     }

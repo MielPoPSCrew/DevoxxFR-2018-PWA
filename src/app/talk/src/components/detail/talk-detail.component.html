@@ -1,26 +1,43 @@
-<div class="talk-detail" *ngIf="talk">
+<div class="talk-detail" *ngIf="event">
     <div class="talk-title">
-        {{talk.title}}
+        {{event.talk.title}}
+    </div>
+
+    <div class="talk-maininfos">
+        <div class="time">
+            <i class="material-icons">access_time</i>
+            <span>{{event.fromTime}} - {{event.toTime}}</span>
+        </div>
+
+        <div class="room">
+            <i class="material-icons">room</i>
+            <span>{{event.room.name}}</span>
+        </div>
     </div>
 
     <mat-divider></mat-divider>
 
     <div class="talk-infos">
-        <img matTooltip="{{ talk.lang }}" src="{{ env.flags[talk.lang] }}"/> <i class="material-icons" matTooltip="{{ talk.talkType }}">{{ env.icons[talk.talkType] }}</i>
+        <img matTooltip="{{ event.talk.lang }}" src="{{ env.flags[event.talk.lang] }}" />
+    </div>
+
+    <div class="talk-type">
+        <i class="material-icons" matTooltip="{{ event.talk.talkType }}">{{ env.icons[event.talk.talkType] }}</i>
+        <span>{{event.talk.talkType}}</span>
     </div>
 
     <div class="talk-track">
-        {{talk.track}}
+        {{event.talk.track}}
     </div>
 
     <div class="talk-summary">
-        {{talk.summary}}
+        {{event.talk.summary}}
     </div>
 
     <mat-divider></mat-divider>
 
     <div class="talk-speakers">
-        <mat-table [dataSource]="talk.speakers" matSort>
+        <mat-table [dataSource]="event.talk.speakers" matSort>
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Speaker </mat-header-cell>
                 <mat-cell *matCellDef="let row"> {{row.identity}} </mat-cell>
@@ -33,6 +50,6 @@
     </div>
 </div>
 
-<div *ngIf="!talk">
+<div *ngIf="!event">
     <app-spinner></app-spinner>
 </div>
