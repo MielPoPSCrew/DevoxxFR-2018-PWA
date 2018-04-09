@@ -1,3 +1,5 @@
+$mobile-size: 600px;
+
 .schedule {
     padding: 0 20px;
     margin-top: 20px;
@@ -5,6 +7,12 @@
     // TODO remove /deep/ because depracated
     /deep/ .mat-tab-header {
         margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: $mobile-size) {
+        /deep/ .mat-tab-label {
+            flex: 1;
+        }
     }
 }
 
