@@ -1,30 +1,78 @@
-<div id="home">
+<!-- <div id="home">
     <h1>Bienvenue !</h1>
 
     <p class="info">
-      Cette application est développée par des étudiants de 
-      <a href="http://www.polytech.u-psud.fr/fr/index.html">Polytech' Paris-Sud</a> 
-      dans le cadre de la matière "Algorithmes pour le Web".<br>
-      <a routerLink="/about" class="more">En savoir plus...</a>
+        Cette application est développée par des étudiants de
+        <a href="http://www.polytech.u-psud.fr/fr/index.html">Polytech' Paris-Sud</a>
+        dans le cadre de la matière "Algorithmes pour le Web".
+        <br>
+        <a routerLink="/about" class="more">En savoir plus...</a>
     </p>
 
     <p>
         Cette application dédiée à la Devoxx France 2018 qui aura lieu le 18, 19 et 20 avril. Elle vous permet de :
     </p>
     <ul>
-      <li><b>Consulter le planning</b> des 3 jours ainsi que le détail des événements</li>
-      <li><b>Bookmarker les conférences</b> que vous ne voulez pas louper et les retrouver dans un planning dédié (en cache sur votre appareil)</li>
-      <li><b>Consulter la liste des intervenants</b> afin d'en apprendre d'avantage sur les différents speaker</li>
+        <li>
+            <b>Consulter le planning</b> des 3 jours ainsi que le détail des événements</li>
+        <li>
+            <b>Bookmarker les conférences</b> que vous ne voulez pas louper et les retrouver dans un planning dédié (en cache
+            sur votre appareil)</li>
+        <li>
+            <b>Consulter la liste des intervenants</b> afin d'en apprendre d'avantage sur les différents speaker</li>
     </ul>
-  
+
     <p>
-      ... Et le tout même sans internet (merci les <em>services-workers</em> !). N'hésitez pas installer 
-      l'application sur votre téléphone (si votre navigateur vous le propose) afin de faciliter 
-      vos 3 jours à la Devoxx ;)
+        ... Et le tout même sans internet (merci les
+        <em>services-workers</em> !). N'hésitez pas installer l'application sur votre téléphone (si votre navigateur vous le
+        propose) afin de faciliter vos 3 jours à la Devoxx ;)
     </p>
-  
+
     <p>
-      Pour finir, n'hésitez pas à nous faire un retour sur cette application ou même contribuer !<br>
-      Plus d'information dans la section "<a routerLink="/about">A propos</a>".
+        Pour finir, n'hésitez pas à nous faire un retour sur cette application ou même contribuer !
+        <br> Plus d'information dans la section "
+        <a routerLink="/about">A propos</a>".
     </p>
+</div>
+ -->
+
+<div class="home">
+    <div class="logo">
+        <img src="/assets/homescreen-512.png" alt="logo">
+    </div>
+
+    <div class="infos">
+        <div class="title">
+            Devoxx FR 2018
+        </div>
+
+        <div class="subtitle">
+            Une application PWA dédiée à la Devoxx France 2018
+        </div>
+    </div>
+
+    <div class="features-list">
+        <div class="feature">
+            <mat-icon matListIcon>schedule</mat-icon>
+            <span>
+                Consultez le planning des 3 jours ainsi que le détail des événements
+            </span>
+        </div>
+        <div class="feature">
+            <mat-icon matListIcon>star</mat-icon>
+            <span>
+                Bookmarkez les conférences que vous ne voulez pas louper et retrouvez-les dans un planning dédié également disponible offline
+            </span>
+        </div>
+        <div class="feature">
+            <mat-icon matListIcon>search</mat-icon>
+            <span>
+                Consultez la liste des intervenants afin d'en apprendre d'avantage sur les différents événements
+            </span>
+        </div>
+    </div>
+
+    <button mat-fab>
+        <mat-icon aria-label="En savoir plus ?" routerLink="/about">help</mat-icon>
+    </button>
 </div>

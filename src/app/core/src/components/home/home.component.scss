@@ -1,21 +1,71 @@
-#home {
-    padding: 0 20px;
-    margin-top: 20px;
-}
+$mobile-size: 600px;
 
-.info {
-    background: #eeeeee;
-    border-left: 4px #F5AF33 solid;
-    padding: 8px;
-    margin: 10px 0;
-}
+.home {
+    .logo {
+        height: 150px;
+        width: 100%;
+        background: black;
+        display: inline-flex;
+        align-items: center;
+        flex-direction: column;
+        border-bottom: solid 2px #F5AF33;
 
-a, a:visited {
-    color: #33b4ff;
-    text-decoration: none;
-}
+        img {
+            height: 100%;
+            flex: 1;
+    
+        }
 
-.more {
-    padding-top: 12px;
-    display: inline-block;
+        @media screen and (min-width: $mobile-size) {
+            height: 250px;
+        }
+    }
+
+    .infos {
+        margin: 20px 30px;
+
+        .title {
+            font-weight: bold;
+            text-align: center;
+            font-size: 24px;
+        }
+    
+        .subtitle {
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+
+    .features-list {
+        margin: 40px 40px 20px 40px;
+
+        @media screen and (min-width: $mobile-size) {
+            width: 60%;
+            margin: 100px auto;
+        }
+
+        .feature {
+            display: flex;
+            flex-direction: row;
+            margin: 15px 0;
+
+            .mat-icon {
+                font-size: 36px;
+                flex: 1;
+                text-align: center;
+            }
+
+            span {
+                flex: 3;
+                font-size: 0.9em;
+            }
+        }
+    }
+
+    .mat-fab {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #F5AF33;
+    }
 }
