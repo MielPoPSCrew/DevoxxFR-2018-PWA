@@ -12,12 +12,12 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-  - ng build --env=prod
+  - ng build --prod
 
 after_success:
   - node fix-sw.js
   - firebase deploy --token $FIREBASE_DEPLOY_KEY
-  - tar cvzf devoxx2018-pwa.tar.gz dist/*
+  - tar cvzf devoxxFR-2018-pwa.tar.gz dist/*
 
 deploy:
   provider: releases
