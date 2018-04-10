@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FavoriteTalksService } from '../../../../services/favorites.service';
 import { Talk } from '../../../../models/talk';
-import { environment } from '../../../../../environments/environment'
+import { environment } from '../../../../../environments/environment';
 
 @Component({
     selector: 'app-schedule-talk',

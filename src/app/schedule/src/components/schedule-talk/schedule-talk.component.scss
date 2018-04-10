@@ -17,6 +17,7 @@ $mobile-size: 600px;
         .mat-card-subtitle {
             margin-bottom: 10px;
             height: 64px;
+            overflow: hidden;
 
             @media screen and (max-width: $mobile-size) {
                 height: 48px;
@@ -51,33 +52,24 @@ $mobile-size: 600px;
                 }
             }
         }
-
-        // .tags {
-        //     margin-top: 15px;
-
-        //     .mat-chip-list{
-        //         .mat-chip {
-        //             padding: 2px 5px;
-        //             background: #F5AF33;
-        //             border-radius: 2px;
-        //             margin: 0 4px 2px 0;
-        //         }
-        //     }
-        // }
         
         .footer {
             .type {
                 font-size: 0.7em;
                 position: absolute;
                 bottom: 5px;
-                color: #C6C6C6;
+                color: #585858;
+
+                img {
+                    margin-right: 5px;
+                }
             }
 
             .fav {
                 position: absolute;
                 bottom: 0;
                 right: 5px;
-                color: #C6C6C6;
+                color: #585858;
             }
         }
     }

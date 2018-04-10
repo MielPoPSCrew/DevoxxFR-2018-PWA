@@ -46,7 +46,6 @@ export class ScheduleComponent implements OnInit {
         this.eventsService.getEvents().subscribe((data) => {
             this.eventsData = data;
             this.schedule = this.sortEvents(this.eventsData);
-            console.log('schedule', this.schedule);
         });
 
     }

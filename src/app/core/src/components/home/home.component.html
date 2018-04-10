@@ -1,3 +1,40 @@
 <div class="home">
-    Home Component
+    <div class="logo">
+        <img src="/assets/homescreen-512.png" alt="logo">
+    </div>
+
+    <div class="infos">
+        <div class="title">
+            Devoxx FR 2018
+        </div>
+
+        <div class="subtitle">
+            Une application PWA dédiée à la Devoxx France 2018
+        </div>
+    </div>
+
+    <div class="features-list">
+        <div class="feature">
+            <mat-icon matListIcon>schedule</mat-icon>
+            <span>
+                Consultez le planning des 3 jours ainsi que le détail des événements
+            </span>
+        </div>
+        <div class="feature">
+            <mat-icon matListIcon>star</mat-icon>
+            <span>
+                Bookmarkez les conférences que vous ne voulez pas louper et retrouvez-les dans un planning dédié également disponible offline
+            </span>
+        </div>
+        <div class="feature">
+            <mat-icon matListIcon>search</mat-icon>
+            <span>
+                Consultez la liste des intervenants afin d'en apprendre d'avantage sur les différents événements
+            </span>
+        </div>
+    </div>
+
+    <button mat-fab routerLink="/about">
+        <mat-icon aria-label="En savoir plus ?">help</mat-icon>
+    </button>
 </div>

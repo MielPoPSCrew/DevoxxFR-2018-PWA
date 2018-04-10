@@ -35,7 +35,7 @@ import { FavoriteTalksService } from './services/favorites.service';
 
 // TODO improve routing with xxx-routing modules
 const appRoutes: Routes = [
-    { path: '', component: AboutComponent },
+    { path: '', component: HomeComponent },
     { path: 'schedule', component: ScheduleComponent },
     { path: 'talks', component: TalksListComponent },
     { path: 'talks/:talkId', component: TalkDetailComponent },

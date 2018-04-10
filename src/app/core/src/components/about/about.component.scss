@@ -1,4 +1,30 @@
-#about {
-    padding: 0 20px;
-    margin-top: 20px;
+$mobile-size: 600px;
+
+.about {
+    margin: 30px;
+
+    @media screen and (min-width: $mobile-size) {
+        width: 80%;
+    }
+
+    .topic {
+        margin: 40px 0;
+
+        .title {
+            font-weight: bold;
+            font-size: 1.2em;
+            width: 100%;
+            border-bottom: solid 1px #F5AF33;
+            padding-bottom: 5px;
+        }
+
+        .content {
+            text-align: justify;
+
+            a {
+                text-decoration: none;
+                color: #F5AF33;
+            }
+        } 
+    }
 }

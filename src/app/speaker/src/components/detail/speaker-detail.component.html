@@ -18,9 +18,7 @@
 
     <mat-divider></mat-divider>
 
-    <div class="speaker-bio">
-        {{speaker.bio}}
-    </div>
+    <div class="speaker-bio" [innerHtml]="speaker.bioAsHtml"></div>
 
     <mat-divider></mat-divider>
 
@@ -35,24 +33,30 @@
     </div>
 
     <div class="speaker-talks">
-        <mat-table [dataSource]="speaker.acceptedTalks" matSort>
+        <mat-table [dataSource]="talksData" matSort>
             <ng-container matColumnDef="type">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
                 <mat-cell *matCellDef="let row">
-                    <i class="material-icons" matTooltip="{{ row.talkType }}">{{ env.icons[row.talkType] }}</i> 
+                    <i class="material-icons" matTooltip="{{row.talkType}}">{{env.icons[row.talkType]}}</i>
+                    <span> {{row.talkType}}</span>
                 </mat-cell>
-
             </ng-container>
 
             <ng-container matColumnDef="title">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Talk </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <img matTooltip="{{row.lang}}" src="{{env.flags[row.lang]}}" /> {{row.title}}
+                </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/talks/{{row.id}}">
             </mat-row>
         </mat-table>
+
+        <div *ngIf="talks.length === 0">
+            <app-spinner></app-spinner>
+        </div>
     </div>
 </div>
 

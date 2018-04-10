@@ -11,7 +11,7 @@ import { EventsService } from '../../../../services/events.service';
 })
 export class TalksListComponent implements OnInit, OnDestroy {
 
-    displayedColumns = ['type', 'lang', 'title'];
+    displayedColumns = ['type', 'title'];
     talksData = null;
     dataSource = new MatTableDataSource();
     mobileQuery: MediaQueryList;
@@ -29,23 +29,23 @@ export class TalksListComponent implements OnInit, OnDestroy {
             this.mobileQuery = media.matchMedia('(max-width: 600px)');
             this._mobileQueryListener = () => changeDetectorRef.detectChanges();
             this.mobileQuery.addListener(this._mobileQueryListener);
-            this.dataSource.filterPredicate = function(data: any, filter: string){
-                var ret = true;
-                filter.split(' ').forEach((d)=>{
-                    if(data.talk.title.toUpperCase().indexOf(d.toUpperCase()) === -1){
+
+            this.dataSource.filterPredicate = function(data: any, filter: string) {
+                let ret = true;
+                filter.split(' ').forEach((d) => {
+                    if (data.talk.title.toUpperCase().indexOf(d.toUpperCase()) === -1) {
                         ret = false;
                         return;
                     }
                 });
                 return ret;
-            }
+            };
     }
 
     ngOnInit() {
         this.eventsService.getTalks().subscribe((data) => {
             this.talksData = data;
             this.dataSource.data = this.talksData;
-            console.log(this.talksData);
         });
      }
 

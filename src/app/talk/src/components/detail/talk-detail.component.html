@@ -1,38 +1,75 @@
-<div class="talk-detail" *ngIf="talk">
+<div class="talk-detail" *ngIf="event">
     <div class="talk-title">
-        {{talk.title}}
+        {{event.talk.title}}
+    </div>
+
+    <div class="talk-fav" (click)="bookmarkTalk(event.talk.id);">
+        <mat-icon *ngIf="favorited">star</mat-icon>
+        <mat-icon *ngIf="!favorited">star_bordered</mat-icon>
+    </div>
+
+    <div class="talk-maininfos">
+        <div class="time">
+            <i class="material-icons">access_time</i>
+            <span>{{event.fromTime}} - {{event.toTime}}</span>
+        </div>
+
+        <div class="room">
+            <i class="material-icons">room</i>
+            <span>{{event.room.name}}</span>
+        </div>
     </div>
 
     <mat-divider></mat-divider>
 
-    <div class="talk-infos">
-        <img matTooltip="{{ talk.lang }}" src="{{ env.flags[talk.lang] }}"/> <i class="material-icons" matTooltip="{{ talk.talkType }}">{{ env.icons[talk.talkType] }}</i>
+    <div class="talk-type">
+        <i class="material-icons" matTooltip="{{ event.talk.talkType }}">{{ env.icons[event.talk.talkType] }}</i>
+        <span>{{event.talk.talkType}}</span>
     </div>
 
     <div class="talk-track">
-        {{talk.track}}
+        {{event.talk.track}}
     </div>
 
-    <div class="talk-summary">
-        {{talk.summary}}
+    <div class="talk-infos">
+        <img matTooltip="{{ event.talk.lang }}" src="{{ env.flags[event.talk.lang] }}" />
     </div>
+
+    <div class="talk-summary" [innerHtml]="event.talk.summaryAsHtml"></div>
 
     <mat-divider></mat-divider>
 
     <div class="talk-speakers">
-        <mat-table [dataSource]="talk.speakers" matSort>
-            <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Speaker </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.identity}} </mat-cell>
+        <mat-table [dataSource]="speakersData" matSort>
+            <ng-container matColumnDef="avatar">
+                <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+                <mat-cell *matCellDef="let row" class="img-cell">
+                    <img *ngIf="row.avatarURL === null" src="/assets/default_black.png" [alt]="row.lastName" >
+                    <img *ngIf="row.avatarURL !== null" [src]="row.avatarURL" [alt]="row.lastName" (error)="errorHandler($event)"> 
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.firstName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Nom </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.lastName}} </mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/speakers/{{row.id}}">
+            <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/speakers/{{row.uuid}}">
             </mat-row>
         </mat-table>
+
+        <div *ngIf="speakers.length === 0">
+            <app-spinner></app-spinner>
+        </div>
     </div>
 </div>
 
-<div *ngIf="!talk">
+<div *ngIf="!event">
     <app-spinner></app-spinner>
 </div>

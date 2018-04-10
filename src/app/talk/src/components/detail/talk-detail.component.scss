@@ -1,3 +1,5 @@
+$mobile-size: 600px;
+
 .talk-detail {
     display: flex;
     flex-direction: column;
@@ -9,23 +11,117 @@
         margin: 10px 30px;
     }
 
+    .talk-fav {
+        cursor: pointer;
+    } 
+
+    .talk-maininfos {
+        margin-top: 5px;
+        padding: 0 30px;
+        display: inline-flex;
+
+        .time, .room {
+            border-radius: 2px;
+            background: #F5AF33;
+            color: white;
+            flex: 1;
+            padding: 3px 0;
+            text-align: center;
+
+            i {
+                display: inline-flex;
+                vertical-align: middle;
+                padding-bottom: 3px;
+                font-size: 1em;
+            }
+        }
+
+        .time {
+            margin-right: 5px;
+        }
+
+        .room {
+            margin-left: 5px;
+        }
+
+        @media screen and (min-width: $mobile-size) {
+            flex-direction: column;
+            align-items: center;
+
+            .time, .room {
+                width: 200px;
+                margin: 5px 0 0 0;
+            }
+        }
+    }
+
+    .talk-type {
+        font-size: 0.9em;
+        opacity: 0.6;
+
+        i {
+            font-size: 14px;
+        }
+    }
+
+    .talk-infos {
+        margin-top: 10px;
+
+        img {
+            max-height: 20px;
+        }
+    }
+
     .talk-summary {
         text-align: justify;
-        margin: 10px 30px;
+        margin: 0 30px;
     }
 
     .talk-speakers {
         .mat-table {
+            text-align: left;
+
+            .mat-header-row {
+                .mat-column-avatar {
+                    max-width: 100px;
+                }
+
+                @media screen and (min-width: $mobile-size) {
+                    .mat-column-firstName,
+                    .mat-column-lastName {
+                        max-width: 250px;
+                    }
+                }
+            }
+
             .mat-row {
                 cursor: pointer;
-    
+
                 &:hover {
                     background: rgba(0, 0, 0, .04);
                 }
 
                 .mat-cell {
-                    text-align: left;
-                }
+                    &.mat-column-avatar {
+                        padding-top: 3px;
+                        max-width: 100px;
+                    }
+
+                    img {
+                        height: 24px;
+                        width: 24px;
+                        margin-right: 10px;
+                        border-radius: 50%;
+                    }
+
+                    @media screen and (min-width: $mobile-size) {
+                        &.mat-column-firstName,
+                        &.mat-column-lastName {
+                            max-width: 250px;
+                            font-size: 1em;
+                        }
+                    }
+                } 
             }
         }
     }

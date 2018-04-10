@@ -1,3 +1,5 @@
+$mobile-size: 600px;
+
 .speaker-detail {
     display: flex;
     flex-direction: column;
@@ -29,7 +31,7 @@
         margin-top: 5px;
 
         img {
-            height: 24px;
+            height: 20px;
             width: auto;
         }
     }
@@ -62,27 +64,70 @@
         .mat-table {
             .mat-header-row {
                 .mat-column-type {
-                    max-width: 80px;
+                    max-width: 100px;
+
+                    @media screen and (min-width: $mobile-size) {
+                        max-width: 140px;
+                    }
+                }
+
+                .mat-colum-title {
+                    @media screen and (min-width: $mobile-size) {
+                        padding-left: 20px;
+                    }
                 }
             }
 
             .mat-row {
                 cursor: pointer;
-    
+                padding: 4px 24px;
+
                 &:hover {
                     background: rgba(0, 0, 0, .04);
                 }
-
+                
                 .mat-cell {
                     text-align: left;
 
                     &.mat-column-type {
-                        max-width: 80px;
+                        max-width: 100px;
+                        font-size: 0.8em;
+
+                        i {
+                            display: inline-flex;
+                            vertical-align: middle;
+                            padding-bottom: 3px;
+                            font-size: 1em;
+                        }
+
+                        @media screen and (min-width: $mobile-size) {
+                            font-size: 1em;
+                            max-width: 140px;
+                        }
+                    }
+
+                    &.mat-column-title {
+                        img {
+                            height: 12px;
+                            display: inline-flex;
+                            vertical-align: middle;
+                            padding-bottom: 2px;
+                            margin-right: 4px;
+                        }
+
+                        @media screen and (min-width: $mobile-size) {
+                            font-size: 1em;
+                            height: 24x;
+                            padding-left: 20px;
+
+                            img {
+                                padding-bottom: 3px;
+                            }
+                        }
                     }
                 }
             }
         }
-
     }
 
     .mat-divider {
