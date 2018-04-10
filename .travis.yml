@@ -1,0 +1,30 @@
+language: node_js
+node_js:
+- "8"
+
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+
+before_script:
+  - npm install -g firebase-tools
+  - npm install -g @angular/cli
+
+script:
+  - ng build --env=prod
+
+after_success:
+  - node fix-sw.js
+  - firebase deploy --token $FIREBASE_DEPLOY_KEY
+  - tar cvzf devoxx2018-pwa.tar.gz dist/*
+
+deploy:
+  provider: releases
+  api_key:
+    secure: lrJxa1Bt+7BwI9mS4tTt8oPraoCf7cf1VeGdlXD3na3N5G55OQa6CTcUc0DsBSMjqkk+YXGKjotXMmDxQR3bb2QRI8hmY2Ubmj+iMXSu94nMqiw4xdk0cDm0jTybcOcQ6xTq6ruddmCzYvbR4E3GLiSqftkJIpgFM3FK5mG2QB22gofW8xHOJUy/4BWNLALGiFgRb4O8SDXYorZgi+Hk4E+CTBgqKdUF3ZshCgfvwzzJ3zX9QxQKbm/SWWuElYU7IRzFmEBtWjmD3wQsL7M3eDjYDa/WyR7HfgFerrAQgYx7wxNXBs1vSfKjT5eM8CRpwGI2gfj/u/H39AqbU4KptLOt4fjifCab/IGiVYHcECRFGPX8yh1Xg3nGoPVhSwDGeJ1raMHonKQtRqFupdpR9lvdF7s0mt6OSqAtVAffCf/llAhP3v0i182llc1F8dHySxUJ39KpJadtjsu71CLMd6ovPmoFF/K2/z/Y/zO2hmhMJQxCLaBiEPC1GWTFlIMrnxkbywGhO+VRbr47MEnToehQa8IupFdKh1AlcAEQiRnXCkI4YoI1CjF+93sNHjBlT0hsNDHq33SnNtWycrsTKi1rIGBy5zut0GcEhO4gXy5u5MkXsU6nYuYTiRm3zqhy5s+8Y76tfIoqkhEAE2QTYX7+yzE2+LbCk2T8bzYID9U=
+  file: devoxxFR-2018-pwa.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: MielPoPSCrew/DevoxxFR-2018-PWA
