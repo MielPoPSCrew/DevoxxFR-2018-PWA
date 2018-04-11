@@ -22,7 +22,7 @@ export class Speaker {
         speaker.bioAsHtml = json['bioAsHtml'];
         speaker.firstName = Speaker.cleanIdentity(json['firstName']);
         speaker.lastName = Speaker.cleanIdentity(json['lastName']);
-        speaker.avatarURL = json['avatarURL'];
+        speaker.avatarURL = this.forceHttps(json['avatarURL']);
         speaker.company = json['company'];
         speaker.blog = json['blog'];
         speaker.twitter = json['twitter'];
@@ -49,6 +49,16 @@ export class Speaker {
             .split(' ')
             .map(word => word[0].toUpperCase() + word.substr(1))
             .join(' ');
+    }
+
+    public static forceHttps(url: string): string {
+        let https = url;
+
+        if (url) {
+            https = https.replace(/^http:/, 'https:');
+        }
+
+        return https;
     }
 }
 
