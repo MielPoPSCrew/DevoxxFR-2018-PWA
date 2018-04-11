@@ -75,6 +75,11 @@ $mobile-size: 600px;
     .talk-summary {
         text-align: justify;
         margin: 0 30px;
+
+        /deep/ img {
+            max-width: 100%;
+            height: auto;
+        }
     }
 
     .talk-speakers {
