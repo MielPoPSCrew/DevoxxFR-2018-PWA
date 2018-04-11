@@ -10,20 +10,23 @@
 
     <div class="talk-maininfos">
         <div class="time">
+            <div class="day">{{dayFr}}</div>
             <i class="material-icons">access_time</i>
             <span>{{event.fromTime}} - {{event.toTime}}</span>
         </div>
 
         <div class="room">
-            <i class="material-icons">room</i>
-            <span>{{event.room.name}}</span>
+            <div class="info-room">
+                <i class="material-icons">room</i>
+                <span>{{event.room.name}}</span>
+            </div>
         </div>
     </div>
 
     <mat-divider></mat-divider>
 
     <div class="talk-type">
-        <i class="material-icons" matTooltip="{{ event.talk.talkType }}">{{ env.icons[event.talk.talkType] }}</i>
+        <i class="material-icons" matTooltip="{{ event.talk.talkType }}">{{env.icons[event.talk.talkType]}}</i>
         <span>{{event.talk.talkType}}</span>
     </div>
 
@@ -44,8 +47,8 @@
             <ng-container matColumnDef="avatar">
                 <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
                 <mat-cell *matCellDef="let row" class="img-cell">
-                    <img *ngIf="row.avatarURL === null" src="/assets/default_black.png" [alt]="row.lastName" >
-                    <img *ngIf="row.avatarURL !== null" [src]="row.avatarURL" [alt]="row.lastName" (error)="errorHandler($event)"> 
+                    <img *ngIf="row.avatarURL === null" src="/assets/default_black.png" [alt]="row.lastName">
+                    <img *ngIf="row.avatarURL !== null" [src]="row.avatarURL" [alt]="row.lastName" (error)="errorHandler($event)">
                 </mat-cell>
             </ng-container>
 
