@@ -52,15 +52,10 @@ export class Speaker {
     }
 
     public static forceHttps(url: string): string {
-        
         let https = url;
-        if (url === 'http://centromere.free.fr/me.png')
-            console.log(https);
 
         if (url) {
             https = https.replace(/^http:/, 'https:');
-            if (url === 'http://centromere.free.fr/me.png')
-            console.log(https);
         }
 
         return https;
