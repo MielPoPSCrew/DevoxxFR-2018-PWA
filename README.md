@@ -1,6 +1,14 @@
 Devoxx FR 2018 - PWA
 ====================
 
+## Présentation
+
+Cette Progressive Web App est dédiée à la Devoxx France 2018. Elle permet de :
+
+* Consultez le planning des 3 jours ainsi que le détail des événements
+* Bookmarkez les conférences que vous ne voulez pas louper et retrouvez-les dans un planning dédié également disponible offline
+* Consultez la liste des intervenants afin d'en apprendre d'avantage sur les différents événements 
+
 ## Cadre du projet
 
 Devoxx FR 2018 est une application dévelopée par trois apprentis ingénieurs en informatique en dernière année à [Polytech' Paris-Sud](http://www.polytech.u-psud.fr/fr/index.html) dans le cadre de la matière "Algorithmes pour le Web".
