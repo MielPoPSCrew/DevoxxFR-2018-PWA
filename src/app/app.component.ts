@@ -3,6 +3,7 @@ import { EventsService } from './services/events.service';
 import { SpeakersService } from './services/speakers.service';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { LocationStrategy, isPlatformBrowser } from '@angular/common';
+import { NavigationService } from './services/navigation.service';
 
 @Component({
     selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit, AfterContentChecked {
         private speakers: SpeakersService,
         @Inject(PLATFORM_ID) private platformId: Object,
         private router: Router,
-        private locStrat: LocationStrategy
+        private locStrat: LocationStrategy,
+        private navigation: NavigationService,
     ) { }
 
     // Save scroll position from :
@@ -29,7 +31,6 @@ export class AppComponent implements OnInit, AfterContentChecked {
     ngOnInit(): void {
         if (isPlatformBrowser(this.platformId)) {
             // prevent nguniversal problems
-            console.log('Adding scrollTopListener');
             this.addScrollTopListeners();
         }
     }
@@ -99,6 +100,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
 
             if (event instanceof NavigationEnd) {
                 if (this._isPopState) {
+                    this.navigation.popEvent = true;
                     // popstate navigation, try to restore saved scroll position immediately
                     // immediate restoration might be possible if the source view is taller than the target view
                     if (!this.restoreScroll(event.url)) {
@@ -117,6 +119,7 @@ export class AppComponent implements OnInit, AfterContentChecked {
                         this._deferredRestore = true;
                     }
                 } else {
+                    this.navigation.popEvent = false;
                     // scroll to top on regular router navigation
                     window.scrollTo(0, 0);
                 }
