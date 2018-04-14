@@ -32,6 +32,7 @@ import { BookmarksComponent } from './schedule/src/components/bookmarks/bookmark
 import { EventsService } from './services/events.service';
 import { SpeakersService } from './services/speakers.service';
 import { FavoriteTalksService } from './services/favorites.service';
+import { NavigationService } from './services/navigation.service';
 
 // TODO improve routing with xxx-routing modules
 const appRoutes: Routes = [
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
         EventsService,
         SpeakersService,
         FavoriteTalksService,
+        NavigationService,
     ],
     bootstrap: [AppComponent]
 })

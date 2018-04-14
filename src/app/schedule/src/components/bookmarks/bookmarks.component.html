@@ -1,5 +1,5 @@
 <div class="bookmark" *ngIf="bookmark">
-    <mat-tab-group>
+    <mat-tab-group [selectedIndex]="selectedIndex" (selectedTabChange)="onTabChange($event)">
         <mat-tab label="Mercredi">
             <app-schedule-periode *ngFor="let periode of bookmark.wednesday" [periode]="periode"></app-schedule-periode>
             <div *ngIf="!isBookmarkResolved">

@@ -3,6 +3,7 @@ import { EventsService } from '../../../../services/events.service';
 
 import * as _ from 'lodash';
 import { Event } from '../../../../models/event';
+import { NavigationService } from '../../../../services/navigation.service';
 
 @Component({
     selector: 'app-schedule',
@@ -13,9 +14,14 @@ export class ScheduleComponent implements OnInit {
 
     public eventsData: Event[];
     public schedule: any;
+    private selectedIndex: number;
 
-    constructor(private eventsService: EventsService) {
+    constructor(private eventsService: EventsService, private navigation: NavigationService) {
         this.schedule = {};
+    }
+
+    onTabChange(selectedTab: number): void {
+        this.navigation.put('schedule-day', selectedTab['index']);
     }
 
     sortEvents(eventsData): object {
@@ -48,5 +54,8 @@ export class ScheduleComponent implements OnInit {
             this.schedule = this.sortEvents(this.eventsData);
         });
 
+        if (this.navigation.popEvent) {
+            this.selectedIndex = this.navigation.get('schedule-day');
+        }
     }
 }
