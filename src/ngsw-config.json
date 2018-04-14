@@ -23,7 +23,11 @@
     "updateMode": "prefetch",
     "resources": {
       "files": [
-        "/assets/**"
+        "/assets/**",
+        "/homescreen.png"
+      ],
+      "urls": [
+        "https://fonts.googleapis.com/**"
       ]
     }
   }],
