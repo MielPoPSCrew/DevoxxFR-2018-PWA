@@ -66,6 +66,11 @@ $mobile-size: 600px;
         width: 40%;
         margin: 0 30%;
         background: #F5AF33;
+
+        @media screen and (min-width: $mobile-size) {
+            width: 20%;
+            margin: 0 40%;
+        }
         
         .mat-button-wrapper {
             color: white;
