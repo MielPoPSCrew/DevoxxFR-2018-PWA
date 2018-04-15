@@ -5,6 +5,7 @@ node_js:
 branches:
   only:
     - master
+    - develop
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 
 before_script:
@@ -16,7 +17,8 @@ script:
 
 after_success:
   - node fix-sw.js
-  - firebase deploy --token $FIREBASE_DEPLOY_KEY
+  - test $TRAVIS_BRANCH = "master" && firebase deploy -P default --token $FIREBASE_DEPLOY_KEY
+  - test $TRAVIS_BRANCH = "develop" && firebase deploy -P preprod --token $FIREBASE_DEPLOY_KEY
   - tar cvzf devoxxFR-2018-pwa.tar.gz dist/*
 
 deploy:

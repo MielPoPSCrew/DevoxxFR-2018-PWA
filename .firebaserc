@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "devoxx2018-pwa"
+    "default": "devoxx2018-pwa",
+    "preprod": "devoxx2018-pwa-pp"
   }
 }

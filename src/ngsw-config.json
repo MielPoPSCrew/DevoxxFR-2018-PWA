@@ -1,7 +1,7 @@
 {
   "index": "/index.html",
   "appData": {
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "assetGroups": [{
     "name": "app",
@@ -23,7 +23,11 @@
     "updateMode": "prefetch",
     "resources": {
       "files": [
-        "/assets/**"
+        "/assets/**",
+        "/homescreen.png"
+      ],
+      "urls": [
+        "https://fonts.googleapis.com/**"
       ]
     }
   }],

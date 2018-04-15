@@ -3,6 +3,7 @@ import { EventsService } from '../../../../services/events.service';
 import { FavoriteTalksService } from '../../../../services/favorites.service';
 import { Event } from '../../../../models/event';
 import * as _ from 'lodash';
+import { NavigationService } from '../../../../services/navigation.service';
 
 @Component({
     selector: 'app-bookmarks',
@@ -14,10 +15,15 @@ export class BookmarksComponent implements OnInit {
     public eventsData: Event[];
     public bookmark: any;
     public isBookmarkResolved: boolean;
+    private selectedIndex: number;
 
-    constructor(private eventsService: EventsService, private favorite: FavoriteTalksService) {
+    constructor(private eventsService: EventsService, private favorite: FavoriteTalksService, private navigation: NavigationService) {
         this.bookmark = {};
         this.isBookmarkResolved = false;
+    }
+
+    onTabChange(selectedTab: number): void {
+        this.navigation.put('schedule-day', selectedTab['index']);
     }
 
     sortEvents(eventsData): object {
@@ -52,5 +58,8 @@ export class BookmarksComponent implements OnInit {
             this.isBookmarkResolved = true;
         });
 
+        if (this.navigation.popEvent) {
+            this.selectedIndex = this.navigation.get('schedule-day');
+        }
     }
 }

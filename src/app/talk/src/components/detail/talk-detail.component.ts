@@ -20,9 +20,11 @@ export class TalkDetailComponent implements OnInit {
     env = environment;
     displayedColumns = ['avatar', 'firstName', 'lastName'];
     event: Event;
-    public speakers: Speaker[];
-    public speakersData = new MatTableDataSource();
-    public favorited: boolean;
+    dayFr: string;
+    private dateOptions = { weekday: 'long', day: 'numeric' };
+    speakers: Speaker[];
+    speakersData = new MatTableDataSource();
+    favorited: boolean;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -40,6 +42,7 @@ export class TalkDetailComponent implements OnInit {
                 this.favorited = this.favorites.isFavorite(this.event.talk.id);
 
                 this.event.talk.speakers.map((speaker) => {
+                    this.dayFr = new Date(this.event.fromTimeMillis).toLocaleDateString('fr-FR', this.dateOptions);
                     this.speakersService.getSpeaker(speaker.id).subscribe((fullSpeaker) => {
                         this.speakers.push(fullSpeaker);
                         this.speakersData.data = this.speakers;
