@@ -62,10 +62,13 @@ $mobile-size: 600px;
         }
     }
 
-    .mat-fab {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
+    .mat-raised-button {
+        width: 40%;
+        margin: 0 30%;
         background: #F5AF33;
+        
+        .mat-button-wrapper {
+            color: white;
+        }
     }
 }
