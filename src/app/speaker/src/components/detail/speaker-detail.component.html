@@ -23,7 +23,7 @@
     <mat-divider></mat-divider>
 
     <div class="speaker-links">
-        <a href="https://twitter.com/{{ speaker.twitter }}" target="_blank" *ngIf="speaker.twitter">
+        <a href="https://twitter.com/{{speakerTwitterAt}}" target="_blank" *ngIf="speaker.twitter">
             <img src="assets/twitter.png" [alt]="speaker.twitter">
         </a>
         <a href="{{ speaker.blog }}" target="_blank" *ngIf="speaker.blog">

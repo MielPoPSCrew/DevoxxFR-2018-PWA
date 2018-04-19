@@ -24,12 +24,14 @@ export class SpeakerDetailComponent implements OnInit {
     public talks: Talk[];
     public talksData = new MatTableDataSource();
     public speaker: Speaker;
+    public speakerTwitterAt: string;
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private speakersService: SpeakersService,
         private eventsService: EventsService) {
             this.talks = [];
+            this.speakerTwitterAt = '';
     }
 
     ngOnInit() {
@@ -38,6 +40,10 @@ export class SpeakerDetailComponent implements OnInit {
 
             this.speakersService.getSpeaker(speakerId).subscribe((data) => {
                 this.speaker = data;
+
+                if (this.speaker.twitter) {
+                    this.speakerTwitterAt = this.cleanTwitterField(data.twitter);
+                }
 
                 this.speaker.acceptedTalks.map((talk) => {
                     this.eventsService.getTalk(talk.id).subscribe((fullEvent) => {
@@ -51,5 +57,16 @@ export class SpeakerDetailComponent implements OnInit {
 
     errorHandler(event) {
         event.target.src = '/assets/default_black.png';
+    }
+
+    cleanTwitterField(twitter) {
+        let cleanTwitterAt = twitter.replace(/@/g, '');
+
+        if (cleanTwitterAt.includes('http')) {
+            const splitStr = cleanTwitterAt.split('/');
+            cleanTwitterAt = splitStr[splitStr.length - 1];
+        }
+
+        return cleanTwitterAt;
     }
 }

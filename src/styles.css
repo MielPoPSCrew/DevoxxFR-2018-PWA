@@ -2,7 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-  margin: 0 !important;
-  background-color: #FAFAFA;
-  font-family: 'Roboto', sans-serif;
+    margin: 0 !important;
+    background-color: #FAFAFA;
+    font-family: 'Roboto', sans-serif;
 }
